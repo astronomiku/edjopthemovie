@@ -1,95 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDJOP The Movie</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #050505;
+      color: #f5f1e8;
+      font-family: Arial, sans-serif;
+    }
 
-<title>Film Title</title>
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 40px;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom, rgba(0,0,0,.8), transparent);
+    }
 
-<link rel="stylesheet" href="style.css">
+    .logo {
+      font-size: 22px;
+      letter-spacing: .18em;
+      font-weight: bold;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    nav a {
+      color: #f5f1e8;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
 
+    nav a:hover { opacity: 1; }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 120px 24px 60px;
+      box-sizing: border-box;
+      background:
+        radial-gradient(circle at center, rgba(120,0,0,.25), transparent 45%),
+        #050505;
+    }
+
+    .video-wrap {
+      width: min(1100px, 92vw);
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 0 60px rgba(0,0,0,.8);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    section {
+      padding: 100px 10vw;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 120px);
+      letter-spacing: .12em;
+      text-align: center;
+      margin: 0 0 32px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 64px);
+      margin: 0 0 24px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    p {
+      max-width: 760px;
+      line-height: 1.7;
+      font-size: 18px;
+      opacity: .86;
+    }
+
+    .placeholder {
+      opacity: .45;
+      font-style: italic;
+    }
+
+    .video-grid, .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 28px;
+      min-height: 140px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 22px;
+      border: 1px solid #f5f1e8;
+      color: #f5f1e8;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 60px 10vw;
+      opacity: .6;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        position: static;
+        display: block;
+        padding: 24px;
+      }
+
+      nav {
+        justify-content: flex-start;
+        margin-top: 18px;
+        gap: 14px;
+      }
+
+      nav a { font-size: 12px; }
+
+      section { padding: 70px 24px; }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-FILM TITLE
-</div>
-
-<nav>
-
-<a href="#synopsis">Synopsis</a>
-<a href="#cast">Main Cast</a>
-<a href="#videos">Videos</a>
-<a href="#news">News</a>
-<a href="#events">Upcoming Events</a>
-<a href="#screening">Book a Screening</a>
-<a href="#contact">Contact Us</a>
-
-</nav>
-
+  <div class="logo">EDJOP</div>
+  <nav>
+    <a href="#synopsis">Synopsis</a>
+    <a href="#cast">Main Cast</a>
+    <a href="#videos">Videos</a>
+    <a href="#news">News</a>
+    <a href="#events">Upcoming Events</a>
+    <a href="#screening">Book a Screening</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
 </header>
 
-<section class="hero" id="videos">
+<main>
 
-<div class="video-wrapper">
+  <section class="hero" id="top">
+    <div>
+      <h1>EDJOP</h1>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/VldT1Dj5AfU"
+          title="EDJOP Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
 
-<iframe
-src="https://www.youtube.com/embed/VldT1Dj5AfU"
-title="Trailer"
-allowfullscreen>
-</iframe>
+  <section id="synopsis">
+    <h2>Synopsis</h2>
+    <p class="placeholder">Synopsis copy goes here.</p>
+  </section>
 
-</div>
+  <section id="cast">
+    <h2>Main Cast</h2>
+    <div class="card-grid">
+      <div class="card">Cast Member</div>
+      <div class="card">Cast Member</div>
+      <div class="card">Cast Member</div>
+    </div>
+  </section>
 
-</section>
+  <section id="videos">
+    <h2>Videos</h2>
+    <div class="video-grid">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/VldT1Dj5AfU" title="Trailer" allowfullscreen></iframe>
+      </div>
+      <div class="card">Teaser video coming soon.</div>
+      <div class="card">Documentary video coming soon.</div>
+    </div>
+  </section>
 
-<section id="synopsis">
+  <section id="news">
+    <h2>News</h2>
+    <div class="card-grid">
+      <div class="card">News item coming soon.</div>
+    </div>
+  </section>
 
-<h2>Synopsis</h2>
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="card-grid">
+      <div class="card">Upcoming screening dates will be announced soon.</div>
+    </div>
+  </section>
 
-<p>
-Coming soon...
-</p>
+  <section id="screening">
+    <h2>Book a Screening</h2>
+    <p>For school, community, festival, or private screenings, please contact us.</p>
+    <a class="button" href="mailto:your@email.com">Request a Screening</a>
+  </section>
 
-</section>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: your@email.com</p>
+    <p>Social media links here.</p>
+  </section>
 
-<section id="cast">
+</main>
 
-<h2>Main Cast</h2>
-
-</section>
-
-<section id="news">
-
-<h2>News</h2>
-
-</section>
-
-<section id="events">
-
-<h2>Upcoming Events</h2>
-
-</section>
-
-<section id="screening">
-
-<h2>Book a Screening</h2>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact Us</h2>
-
-</section>
+<footer>
+  © 2026 EDJOP. All rights reserved.
+</footer>
 
 </body>
 </html>
