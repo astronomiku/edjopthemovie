@@ -411,25 +411,109 @@
       border-top: 1px solid rgba(255,255,255,.06);
     }
 
+    /* ─── HAMBURGER ───────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 60;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--cream);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5,5,5,.97);
+      z-index: 55;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .nav-drawer.open { display: flex; }
+
+    .nav-drawer a {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: .2em;
+      opacity: .85;
+    }
+
+    .nav-drawer a:hover { opacity: 1; }
+
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 820px) {
+      /* landing */
+      #landing { gap: 28px; padding: 32px 16px; justify-content: flex-start; padding-top: 48px; }
+      .landing-title { width: 92vw; }
+      .trailer-wrap { width: 96vw; }
+
+      /* countdown: tighten numbers on small screens */
+      .cd-num { font-size: clamp(36px, 10vw, 60px); }
+      .cd-sep  { font-size: clamp(30px, 8vw, 52px); padding-bottom: 10px; }
+      .cd-label { font-size: 9px; }
+      #countdown { gap: clamp(8px, 2.5vw, 20px); }
+
+      #enter-btn { font-size: 15px; padding: 14px 40px; }
+
+      /* header: show hamburger, hide desktop nav */
       header {
-        position: static;
-        display: block;
-        padding: 20px 24px;
+        position: fixed;
+        padding: 14px 20px;
         background: rgba(5,5,5,.95);
       }
 
-      nav { justify-content: flex-start; margin-top: 12px; gap: 14px; }
-      nav a { font-size: 12px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .logo { height: 28px; }
 
+      /* sections */
+      section { padding: 64px 20px; }
+      #synopsis { padding-top: 90px; }
+
+      /* cast: single column */
       .cast-layout,
       #cast-jodi .cast-layout {
         grid-template-columns: 1fr;
         direction: ltr;
+        gap: 32px;
       }
 
-      section { padding: 80px 24px; }
+      #cast-elijah .cast-photo img,
+      #cast-jodi .cast-photo img {
+        max-height: 55vw;
+        width: 100%;
+      }
+
+      .cast-name { font-size: clamp(32px, 10vw, 56px); }
+
+      h2 { font-size: clamp(34px, 10vw, 60px); margin-bottom: 24px; }
+      p  { font-size: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .cd-num { font-size: 9vw; }
+      .cd-sep  { font-size: 7.5vw; }
     }
   </style>
 </head>
@@ -498,7 +582,20 @@
       <a href="#screening">Book a Screening</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- mobile nav drawer -->
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#synopsis"  onclick="closeNav()">Synopsis</a>
+    <a href="#cast-elijah" onclick="closeNav()">Cast</a>
+    <a href="#news"      onclick="closeNav()">News</a>
+    <a href="#events"    onclick="closeNav()">Events</a>
+    <a href="#screening" onclick="closeNav()">Book a Screening</a>
+    <a href="#contact"   onclick="closeNav()">Contact</a>
+  </div>
 
   <main>
 
@@ -526,7 +623,7 @@
           <div class="cast-name">Elijah<br>Canlas</div>
           <div class="divider-warm"></div>
           <div class="cast-role">as Edgar "Edjop" Jopson</div>
-          <p style="margin-top:18px;opacity:.5;font-style:italic;">Actor bio coming soon.</p>
+          <p style="margin-top:18px;">Elijah Canlas is a Filipino actor and performer whose work spans film, television, music and theater. He began acting at age 14 with <em>Sundalong Kanin</em>, an independent entry to the Cinemalaya Philippine Independent Film Festival. Canlas' breakthrough performance came in <em>Kalel, 15</em>, earning him Best Actor honors at the 43rd Gawad Urian Awards, 68th FAMAS Awards, the 17th Asian Film Festival in Rome, and the Harlem International Film Festival, among others. In 2020, he was named "Actor of the Year" by CNN Philippines. His recent work includes ensemble and leading roles in both drama and genre projects, establishing him as one of the most dynamic actors of his generation in Philippine cinema.</p>
         </div>
       </div>
     </section>
@@ -542,7 +639,7 @@
           <div class="cast-name">Jodi<br>Sta. Maria</div>
           <div class="divider-cool"></div>
           <div class="cast-role">Role TBA</div>
-          <p style="margin-top:18px;opacity:.5;font-style:italic;">Actor bio coming soon.</p>
+          <p style="margin-top:18px;">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in a wide range of genres, from drama and romance to horror and television serials. Sta. Maria has received multiple nominations from the FAMAS and Gawad Urian Awards and won Best Drama Actress at the Asian Academy Creative Awards in 2022. She was also nominated for Best Performance by an Actress at the 44th International Emmy Awards for her television work. Dubbed by some as one of the Philippines' most compelling performers, she brings depth and presence to every role she undertakes.</p>
         </div>
       </div>
     </section>
@@ -589,7 +686,7 @@
 
 <script>
   // ── Countdown ── set RELEASE to the actual premiere date ─────
-  const RELEASE = new Date('2026-12-01T00:00:00');
+  const RELEASE = new Date('2026-09-16T00:00:00');
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -626,9 +723,21 @@
     landing.classList.remove('gone');
     document.body.style.overflowY = 'hidden';
     window.scrollTo(0, 0);
+    closeNav();
   }
 
   document.body.style.overflowY = 'hidden';
+
+  // ── Mobile nav ───────────────────────────────────────────────
+  function toggleNav() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-drawer').classList.toggle('open');
+  }
+
+  function closeNav() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-drawer').classList.remove('open');
+  }
 </script>
 
 </body>
