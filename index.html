@@ -39,12 +39,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 48px;
+      justify-content: flex-start;
+      gap: 28px;
       background: var(--black);
       transition: opacity .9s ease, visibility .9s ease;
       overflow-y: auto;
-      padding: 40px 20px;
+      padding: 40px 20px 48px;
     }
 
     #landing.gone {
@@ -64,7 +64,7 @@
     }
 
     .trailer-wrap {
-      width: min(800px, 90vw);
+      width: min(640px, 90vw);
       aspect-ratio: 16 / 9;
       box-shadow: 0 0 80px rgba(200, 97, 26, .18);
     }
@@ -114,30 +114,22 @@
     /* enter button */
     #enter-btn {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(14px, 1.8vw, 19px);
+      font-size: clamp(15px, 1.8vw, 20px);
       letter-spacing: .38em;
       padding: 16px 56px;
-      border: 1px solid var(--cream);
+      border: 2px solid #c0151f;
       color: var(--cream);
-      background: transparent;
+      background: #c0151f;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: color .35s ease;
+      transition: background .3s ease, border-color .3s ease, color .3s ease;
     }
 
-    #enter-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--cream);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .35s ease;
+    #enter-btn:hover {
+      background: #a01018;
+      border-color: #a01018;
     }
-
-    #enter-btn:hover::before { transform: scaleX(1); }
-    #enter-btn:hover { color: var(--black); }
 
     #enter-btn span { position: relative; z-index: 1; }
 
@@ -202,8 +194,12 @@
 
     /* sections baseline */
     section {
-      padding: 120px clamp(24px, 10vw, 140px);
-      border-top: 1px solid rgba(255,255,255,.08);
+      min-height: 100vh;
+      padding: 120px clamp(24px, 8vw, 120px);
+      border-top: 3px solid rgba(255,255,255,.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     h2 {
@@ -253,63 +249,88 @@
       color: var(--black);
     }
 
-    /* ─── CAST — ELIJAH (WARM) ───────────────────────────── */
+    /* ─── CAST ───────────────────────────────────────────── */
 
-    #cast-elijah {
+    #cast {
       background:
-        linear-gradient(135deg, rgba(138,42,0,.22) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 50%, rgba(200,97,26,.14) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(138,42,0,.15) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(26,58,92,.2) 100%, transparent 60%),
         var(--black);
     }
 
-    #cast-elijah h2 { color: var(--warm-3); }
+    #cast h2 { color: var(--cream); }
 
-    .cast-layout {
+    .cast-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 40px;
     }
 
-    .cast-photo { position: relative; }
+    .cast-member { display: flex; flex-direction: column; gap: 0; }
 
-    #cast-elijah .cast-photo img {
+    .cast-photo { position: relative; overflow: hidden; }
+
+    .cast-photo img {
       width: 100%;
-      max-height: 72vh;
+      height: 420px;
       object-fit: cover;
       object-position: center top;
       display: block;
-      filter: sepia(.3) saturate(1.15) brightness(.9);
     }
 
-    #cast-elijah .cast-photo::after {
+    .cast-photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 45%, rgba(138,42,0,.5) 100%);
+      background: linear-gradient(to bottom, transparent 50%, rgba(5,5,5,.7) 100%);
       pointer-events: none;
     }
 
-    #cast-elijah .cast-photo::before {
+    /* warm overlay — Elijah */
+    .cast-member.warm .cast-photo img {
+      filter: sepia(.25) saturate(1.1) brightness(.88);
+    }
+    .cast-member.warm .cast-photo::before {
       content: '';
       position: absolute;
       inset: 0;
-      box-shadow: inset 0 0 70px rgba(200,97,26,.28);
+      box-shadow: inset 0 0 60px rgba(200,97,26,.3);
       z-index: 1;
       pointer-events: none;
     }
 
-    .cast-info { display: flex; flex-direction: column; gap: 14px; }
+    /* cool overlay — Jodi */
+    .cast-member.cool .cast-photo img {
+      filter: saturate(.75) hue-rotate(200deg) brightness(.88);
+    }
+    .cast-member.cool .cast-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 60px rgba(58,124,165,.3);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cast-info {
+      padding: 24px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .cast-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 72px);
+      font-size: clamp(28px, 3.5vw, 52px);
       letter-spacing: .1em;
       line-height: 1;
     }
 
+    .cast-member.warm .cast-name { color: var(--warm-3); }
+    .cast-member.cool .cast-name { color: var(--cool-3); }
+
     .cast-role {
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: .22em;
       text-transform: uppercase;
       opacity: .5;
@@ -317,60 +338,15 @@
     }
 
     .divider-warm {
-      width: 48px;
-      height: 2px;
+      width: 36px; height: 2px;
       background: var(--warm-1);
-      margin: 6px 0;
-    }
-
-    /* ─── CAST — JODI (COOL) ─────────────────────────────── */
-
-    #cast-jodi {
-      background:
-        linear-gradient(225deg, rgba(26,58,92,.32) 0%, transparent 55%),
-        radial-gradient(ellipse at 20% 50%, rgba(58,124,165,.12) 0%, transparent 60%),
-        var(--black);
-    }
-
-    #cast-jodi h2 { color: var(--cool-3); }
-
-    #cast-jodi .cast-layout {
-      direction: rtl;
-    }
-
-    #cast-jodi .cast-layout > * { direction: ltr; }
-
-    #cast-jodi .cast-photo img {
-      width: 100%;
-      max-height: 72vh;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: saturate(.75) hue-rotate(200deg) brightness(.88);
-    }
-
-    #cast-jodi .cast-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 45%, rgba(26,58,92,.6) 100%);
-      pointer-events: none;
-    }
-
-    #cast-jodi .cast-photo::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 70px rgba(58,124,165,.28);
-      z-index: 1;
-      pointer-events: none;
+      margin: 4px 0;
     }
 
     .divider-cool {
-      width: 48px;
-      height: 2px;
+      width: 36px; height: 2px;
       background: var(--cool-2);
-      margin: 6px 0;
+      margin: 4px 0;
     }
 
     /* ─── SYNOPSIS ────────────────────────────────────────── */
@@ -491,21 +467,12 @@
       section { padding: 64px 20px; }
       #synopsis { padding-top: 90px; }
 
-      /* cast: single column */
-      .cast-layout,
-      #cast-jodi .cast-layout {
-        grid-template-columns: 1fr;
-        direction: ltr;
-        gap: 32px;
-      }
+      /* cast: single column on mobile */
+      .cast-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cast-photo img { height: 60vw; }
+      .cast-name { font-size: clamp(28px, 8vw, 48px); }
 
-      #cast-elijah .cast-photo img,
-      #cast-jodi .cast-photo img {
-        max-height: 55vw;
-        width: 100%;
-      }
-
-      .cast-name { font-size: clamp(32px, 10vw, 56px); }
+      section { min-height: auto; padding: 80px 20px; }
 
       h2 { font-size: clamp(34px, 10vw, 60px); margin-bottom: 24px; }
       p  { font-size: 15px; }
@@ -576,7 +543,7 @@
     </div>
     <nav>
       <a href="#synopsis">Synopsis</a>
-      <a href="#cast-elijah">Cast</a>
+      <a href="#cast">Cast</a>
       <a href="#news">News</a>
       <a href="#events">Events</a>
       <a href="#screening">Book a Screening</a>
@@ -590,7 +557,7 @@
   <!-- mobile nav drawer -->
   <div class="nav-drawer" id="nav-drawer">
     <a href="#synopsis"  onclick="closeNav()">Synopsis</a>
-    <a href="#cast-elijah" onclick="closeNav()">Cast</a>
+    <a href="#cast" onclick="closeNav()">Cast</a>
     <a href="#news"      onclick="closeNav()">News</a>
     <a href="#events"    onclick="closeNav()">Events</a>
     <a href="#screening" onclick="closeNav()">Book a Screening</a>
@@ -612,35 +579,37 @@
       </p>
     </section>
 
-    <!-- WARM — ELIJAH -->
-    <section id="cast-elijah">
-      <h2>Elijah Canlas</h2>
-      <div class="cast-layout">
-        <div class="cast-photo">
-          <img src="assets/elijah.jpg" alt="Elijah Canlas as Edgar Jopson" />
-        </div>
-        <div class="cast-info">
-          <div class="cast-name">Elijah<br>Canlas</div>
-          <div class="divider-warm"></div>
-          <div class="cast-role">as Edgar "Edjop" Jopson</div>
-          <p style="margin-top:18px;">Elijah Canlas is a Filipino actor and performer whose work spans film, television, music and theater. He began acting at age 14 with <em>Sundalong Kanin</em>, an independent entry to the Cinemalaya Philippine Independent Film Festival. Canlas' breakthrough performance came in <em>Kalel, 15</em>, earning him Best Actor honors at the 43rd Gawad Urian Awards, 68th FAMAS Awards, the 17th Asian Film Festival in Rome, and the Harlem International Film Festival, among others. In 2020, he was named "Actor of the Year" by CNN Philippines. His recent work includes ensemble and leading roles in both drama and genre projects, establishing him as one of the most dynamic actors of his generation in Philippine cinema.</p>
-        </div>
-      </div>
-    </section>
+    <!-- CAST -->
+    <section id="cast">
+      <h2>Main Cast</h2>
+      <div class="cast-grid">
 
-    <!-- COOL — JODI -->
-    <section id="cast-jodi">
-      <h2>Jodi Sta. Maria</h2>
-      <div class="cast-layout">
-        <div class="cast-photo">
-          <img src="assets/jodi.jpg" alt="Jodi Sta. Maria" />
+        <!-- ELIJAH — warm -->
+        <div class="cast-member warm">
+          <div class="cast-photo">
+            <img src="assets/elijah.jpg" alt="Elijah Canlas as Edgar Jopson" />
+          </div>
+          <div class="cast-info">
+            <div class="cast-name">Elijah Canlas</div>
+            <div class="divider-warm"></div>
+            <div class="cast-role">as Edgar "Edjop" Jopson</div>
+            <p style="margin-top:12px;">Elijah Canlas is a Filipino actor and performer whose work spans film, television, music and theater. He began acting at age 14 with <em>Sundalong Kanin</em>, an independent entry to the Cinemalaya Philippine Independent Film Festival. Canlas' breakthrough performance came in <em>Kalel, 15</em>, earning him Best Actor honors at the 43rd Gawad Urian Awards, 68th FAMAS Awards, the 17th Asian Film Festival in Rome, and the Harlem International Film Festival, among others. In 2020, he was named "Actor of the Year" by CNN Philippines. His recent work includes ensemble and leading roles in both drama and genre projects, establishing him as one of the most dynamic actors of his generation in Philippine cinema.</p>
+          </div>
         </div>
-        <div class="cast-info">
-          <div class="cast-name">Jodi<br>Sta. Maria</div>
-          <div class="divider-cool"></div>
-          <div class="cast-role">Role TBA</div>
-          <p style="margin-top:18px;">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in a wide range of genres, from drama and romance to horror and television serials. Sta. Maria has received multiple nominations from the FAMAS and Gawad Urian Awards and won Best Drama Actress at the Asian Academy Creative Awards in 2022. She was also nominated for Best Performance by an Actress at the 44th International Emmy Awards for her television work. Dubbed by some as one of the Philippines' most compelling performers, she brings depth and presence to every role she undertakes.</p>
+
+        <!-- JODI — cool -->
+        <div class="cast-member cool">
+          <div class="cast-photo">
+            <img src="assets/jodi.jpg" alt="Jodi Sta. Maria" />
+          </div>
+          <div class="cast-info">
+            <div class="cast-name">Jodi Sta. Maria</div>
+            <div class="divider-cool"></div>
+            <div class="cast-role">Role TBA</div>
+            <p style="margin-top:12px;">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in a wide range of genres, from drama and romance to horror and television serials. Sta. Maria has received multiple nominations from the FAMAS and Gawad Urian Awards and won Best Drama Actress at the Asian Academy Creative Awards in 2022. She was also nominated for Best Performance by an Actress at the 44th International Emmy Awards for her television work. Dubbed by some as one of the Philippines' most compelling performers, she brings depth and presence to every role she undertakes.</p>
+          </div>
         </div>
+
       </div>
     </section>
 
