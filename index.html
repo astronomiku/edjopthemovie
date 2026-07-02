@@ -220,10 +220,13 @@
       font-size: 13px;
       letter-spacing: .2em;
       opacity: .7;
-      transition: opacity .2s;
+      transition: opacity .2s, color .2s;
     }
 
-    nav a:hover { opacity: 1; }
+    nav a:hover {
+      color: var(--cool-3);
+      opacity: 1;
+    }
 
     /* sections baseline */
     section {
@@ -274,7 +277,8 @@
     }
 
     .news-card:hover {
-      border-color: rgba(232,154,60,.5);
+      border-color: rgba(58,124,165,.65);
+      box-shadow: 0 0 28px rgba(58,124,165,.16);
       opacity: .95;
       transform: translateY(-2px);
     }
@@ -305,16 +309,19 @@
       padding: 14px 32px;
       border: 1px solid var(--cream);
       color: var(--cream);
+      background: transparent;
       text-decoration: none;
       font-family: 'Bebas Neue', sans-serif;
       letter-spacing: .22em;
       font-size: 14px;
-      transition: background .25s, color .25s;
+      cursor: pointer;
+      transition: background .25s, border-color .25s, color .25s;
     }
 
     .button:hover {
-      background: var(--cream);
-      color: var(--black);
+      background: var(--cool-2);
+      border-color: var(--cool-2);
+      color: var(--cream);
     }
 
     /* ─── CAST ───────────────────────────────────────────── */
@@ -422,11 +429,24 @@
       background:
         linear-gradient(90deg, rgba(5,5,5,.88) 0%, rgba(5,5,5,.64) 52%, rgba(5,5,5,.88) 100%),
         radial-gradient(ellipse at center, rgba(255,255,255,.04), transparent 70%),
-        url('assets/fire.png') center / cover no-repeat,
         var(--black);
     }
 
     /* ─── CONTACT ─────────────────────────────────────────── */
+    .copy-message {
+      margin-top: 14px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: .18em;
+      color: var(--warm-3);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    .copy-message.visible {
+      opacity: .9;
+    }
+
     .social-icons {
       display: flex;
       gap: 18px;
@@ -441,10 +461,14 @@
       align-items: center;
       justify-content: center;
       opacity: .65;
-      transition: opacity .2s, transform .2s;
+      transition: opacity .2s, transform .2s, filter .2s;
     }
 
-    .social-icons a:hover { opacity: 1; transform: translateY(-2px); }
+    .social-icons a:hover {
+      filter: drop-shadow(0 0 8px rgba(157,196,216,.65));
+      opacity: 1;
+      transform: translateY(-2px);
+    }
 
     .social-icons img { width: 36px; height: 36px; object-fit: contain; }
 
@@ -505,7 +529,10 @@
       opacity: .85;
     }
 
-    .nav-drawer a:hover { opacity: 1; }
+    .nav-drawer a:hover {
+      color: var(--cool-3);
+      opacity: 1;
+    }
 
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 820px) {
@@ -727,7 +754,8 @@
     <section id="contact">
       <h2>Contact Us</h2>
       <p>For inquiries, media requests, partnerships, and screening bookings.</p>
-      <a class="button" href="mailto:edjopthemovie@gmail.com">Email Us</a>
+      <button class="button" type="button" onclick="copyEmail()">Email Us</button>
+      <p class="copy-message" id="copy-message" aria-live="polite">Email address copied</p>
       <div class="social-icons">
         <a href="https://www.instagram.com/EDJOPTheMovie" target="_blank">
           <img src="assets/instagram.png" alt="Instagram" />
@@ -867,6 +895,38 @@
     reduceMotion.addListener(startEmbers);
   }
   startEmbers();
+
+  // ── Contact email copy ───────────────────────────────────────
+  async function copyEmail() {
+    const email = 'edjopthemovie@gmail.com';
+    const message = document.getElementById('copy-message');
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+
+      message.textContent = 'Email address copied';
+      message.classList.add('visible');
+      window.clearTimeout(copyEmail.messageTimer);
+      copyEmail.messageTimer = window.setTimeout(() => {
+        message.classList.remove('visible');
+      }, 2400);
+    } catch (error) {
+      message.textContent = email;
+      message.classList.add('visible');
+    }
+  }
 
   // ── Mobile nav ───────────────────────────────────────────────
   function toggleNav() {
