@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EDJOP — The Movie</title>
-  <link rel="icon" type="image/jpeg" href="assets/edjoptitle.jpeg" />
+  <link rel="icon" type="image/jpeg" href="assets/edjoptitletrans.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
@@ -252,6 +252,41 @@
       font-size: 15px;
       line-height: 1.7;
       opacity: .65;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--cream);
+      text-decoration: none;
+      transition: opacity .2s, border-color .2s, transform .2s;
+    }
+
+    .news-card:hover {
+      border-color: rgba(232,154,60,.5);
+      opacity: .95;
+      transform: translateY(-2px);
+    }
+
+    .news-meta {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: .22em;
+      color: var(--warm-3);
+      opacity: .9;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px, 2.6vw, 38px);
+      letter-spacing: .08em;
+      line-height: 1.05;
+    }
+
+    .news-summary {
+      opacity: .78;
     }
 
     .button {
@@ -512,7 +547,7 @@
 <div id="landing">
 
   <div class="landing-title">
-    <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
+    <img src="assets/edjoptitletrans.png" alt="EDJOP" />
   </div>
 
   <button id="enter-btn" onclick="enterSite()">
@@ -564,7 +599,7 @@
 
   <header>
     <div class="logo" onclick="goToLanding()">
-      <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
+      <img src="assets/edjoptitletrans.png" alt="EDJOP" />
     </div>
     <nav>
       <a href="#synopsis">About the Film</a>
@@ -640,7 +675,26 @@
     <section id="news">
       <h2>News</h2>
       <div class="card-grid">
-        <div class="card">News updates coming soon.</div>
+        <a class="card news-card" href="https://www.abs-cbn.com/entertainment/showbiz/movies-series/2026/7/1/5-years-in-the-making-edjop-heads-to-cinemas-1234" target="_blank" rel="noopener noreferrer">
+          <span class="news-meta">ABS-CBN News &middot; July 1, 2026</span>
+          <span class="news-title">5 years in the making, film on Martial Law activist heads to cinemas</span>
+          <span class="news-summary">ABS-CBN reports on EDJOP heading to cinemas after years in development.</span>
+        </a>
+        <a class="card news-card" href="https://rollingstonephilippines.com/culture/philippine-cinema/edjop-elijah-canlas-2026-release/" target="_blank" rel="noopener noreferrer">
+          <span class="news-meta">Rolling Stone Philippines &middot; February 19, 2026</span>
+          <span class="news-title">'Edjop' is Coming to Philippine Cinemas This Year</span>
+          <span class="news-summary">Rolling Stone Philippines covers the trailer, cast, and 2026 cinema release.</span>
+        </a>
+        <a class="card news-card" href="https://www.rappler.com/entertainment/movies/edjop-edgar-jopson-cast-2025/" target="_blank" rel="noopener noreferrer">
+          <span class="news-meta">Rappler &middot; 2025</span>
+          <span class="news-title">EDJOP cast announcement</span>
+          <span class="news-summary">Rappler highlights the film's cast and the story of Edgar &quot;Edjop&quot; Jopson.</span>
+        </a>
+        <a class="card news-card" href="https://www.spot.ph/entertainment/movies-music-tv/110291/making-edjop-direk-katski-flores-on-the-journey-of-a-biopic-a4469-20241019-lfrm" target="_blank" rel="noopener noreferrer">
+          <span class="news-meta">SPOT.ph &middot; October 19, 2024</span>
+          <span class="news-title">Making EDJOP: Direk Katski Flores on the journey of a biopic</span>
+          <span class="news-summary">SPOT.ph interviews director Katski Flores on the long road to bringing EDJOP to screen.</span>
+        </a>
       </div>
     </section>
 
@@ -708,6 +762,8 @@
     document.getElementById('landing').classList.add('gone');
     document.getElementById('site').classList.add('visible');
     document.body.style.overflowY = 'auto';
+    window.scrollTo(0, 0);
+    document.getElementById('synopsis').scrollIntoView({ behavior: 'instant' });
   }
 
   function goToLanding() {
