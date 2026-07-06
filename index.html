@@ -466,10 +466,12 @@
 
     .supporting-strip {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 210px));
       gap: 24px;
-      width: 70%;
-      margin-bottom: 34px;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto 34px;
+      justify-content: center;
     }
 
     .supporting-member {
@@ -525,11 +527,14 @@
 
     .supporting-names {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 170px));
       gap: 18px;
-      width: 70%;
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
       padding-top: 24px;
       border-top: 1px solid rgba(255,255,255,.1);
+      justify-content: center;
     }
 
     .supporting-names .supporting-name {
