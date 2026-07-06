@@ -233,23 +233,15 @@
       flex-shrink: 0;
     }
 
-    .release-bar {
-      position: fixed;
-      top: 76px;
-      left: 0;
-      right: 0;
-      z-index: 49;
-      padding: 9px 20px 10px;
-      background: transparent;
+    .header-release {
       color: #c0151f;
       font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(20px, 2.4vw, 34px);
-      letter-spacing: .16em;
+      font-size: clamp(24px, 2.7vw, 42px);
+      letter-spacing: .12em;
       line-height: 1;
-      text-align: center;
       text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba(0,0,0,.88), 0 0 18px rgba(192,21,31,.35);
-      pointer-events: none;
+      white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0,0,0,.72);
     }
 
     .logo img {
@@ -655,18 +647,28 @@
       /* header: show hamburger, hide desktop nav */
       header {
         position: fixed;
-        padding: 12px 20px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "logo menu"
+          "release release";
+        row-gap: 8px;
+        padding: 12px 20px 14px;
         background: rgba(5,5,5,.95);
+        align-items: center;
       }
 
       nav { display: none; }
-      .hamburger { display: flex; }
-      .logo { height: 28px; }
-      .release-bar {
-        top: 52px;
-        padding: 8px 16px 9px;
+      .hamburger { grid-area: menu; display: flex; justify-self: end; }
+      .header-brand { display: contents; }
+      .logo { grid-area: logo; height: 28px; justify-self: start; }
+      .header-release {
+        grid-area: release;
+        justify-self: center;
+        text-align: center;
         font-size: clamp(18px, 5.4vw, 26px);
         letter-spacing: .08em;
+        white-space: normal;
       }
 
       /* sections */
@@ -766,6 +768,7 @@
       <div class="logo" onclick="goToLanding()">
         <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
       </div>
+      <div class="header-release">Opens September 16, 2026</div>
     </div>
     <nav>
       <a href="#synopsis">About the Film</a>
@@ -778,8 +781,6 @@
       <span></span><span></span><span></span>
     </button>
   </header>
-
-  <div class="release-bar">Opens September 16, 2026 Nationwide</div>
 
   <!-- mobile nav drawer -->
   <div class="nav-drawer" id="nav-drawer">
