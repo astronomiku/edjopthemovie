@@ -485,12 +485,9 @@
 
     .supporting-strip {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(128px, 1fr);
-      gap: 18px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scrollbar-width: thin;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 34px;
     }
 
     .supporting-member {
@@ -534,6 +531,31 @@
 
     .supporting-member:nth-child(odd) .supporting-name { color: var(--warm-3); }
     .supporting-member:nth-child(even) .supporting-name { color: var(--cool-3); }
+
+    .supporting-role {
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .52;
+      font-style: italic;
+    }
+
+    .supporting-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .supporting-names .supporting-name {
+      margin-top: 0;
+      font-size: clamp(18px, 1.6vw, 24px);
+    }
+
+    .supporting-names .supporting-name:nth-child(odd) { color: var(--cool-3); }
+    .supporting-names .supporting-name:nth-child(even) { color: var(--warm-3); }
 
     /* ─── SYNOPSIS ────────────────────────────────────────── */
     #synopsis {
@@ -745,7 +767,8 @@
       .cast-photo img { height: 90vw; object-position: center 20%; }
       .cast-name { font-size: clamp(28px, 8vw, 48px); }
       .supporting-cast { margin-top: 48px; }
-      .supporting-strip { grid-auto-columns: 142px; gap: 14px; }
+      .supporting-strip { grid-template-columns: 1fr; gap: 22px; }
+      .supporting-names { gap: 12px 22px; }
       .supporting-name { font-size: 18px; }
 
       section { min-height: auto; padding: 80px 20px; }
@@ -899,7 +922,7 @@
           <div class="cast-info">
             <div class="cast-name">Jodi Sta. Maria</div>
             <div class="divider-cool"></div>
-            <div class="cast-role">as Joyette Jopson</div>
+            <div class="cast-role">Role TBA</div>
             <p style="margin-top:12px;">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in a wide range of genres, from drama and romance to horror and television serials. Sta. Maria has received multiple nominations from the FAMAS and Gawad Urian Awards and won Best Drama Actress at the Asian Academy Creative Awards in 2022. She was also nominated for Best Performance by an Actress at the 44th International Emmy Awards for her television work. Dubbed by some as one of the Philippines' most compelling performers, she brings depth and presence to every role she undertakes.</p>
           </div>
         </div>
@@ -912,31 +935,25 @@
           <div class="supporting-member">
             <div class="supporting-photo"><img src="assets/kakie.jpg" alt="Kakie Pangilinan" /></div>
             <div class="supporting-name">Kakie Pangilinan</div>
+            <div class="supporting-role">as "role"</div>
           </div>
           <div class="supporting-member">
             <div class="supporting-photo placeholder">MLY</div>
             <div class="supporting-name">Menchu Lauchengco-Yulo</div>
+            <div class="supporting-role">as "role"</div>
           </div>
           <div class="supporting-member">
             <div class="supporting-photo"><img src="assets/cedrick.jpg" alt="Cedrick Juan" /></div>
             <div class="supporting-name">Cedrick Juan</div>
+            <div class="supporting-role">as "role"</div>
           </div>
-          <div class="supporting-member">
-            <div class="supporting-photo placeholder">TG</div>
-            <div class="supporting-name">Teroy Guzman</div>
-          </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/nour.jpg" alt="Nour Hooshmand" /></div>
-            <div class="supporting-name">Nour Hooshmand</div>
-          </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/issa.jpg" alt="Issa Litton" /></div>
-            <div class="supporting-name">Issa Litton</div>
-          </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/jethro.jpg" alt="Jethro Tenorio" /></div>
-            <div class="supporting-name">Jethro Tenorio</div>
-          </div>
+        </div>
+
+        <div class="supporting-names">
+          <div class="supporting-name">Teroy Guzman</div>
+          <div class="supporting-name">Nour Hooshmand</div>
+          <div class="supporting-name">Issa Litton</div>
+          <div class="supporting-name">Jethro Tenorio</div>
         </div>
       </div>
     </section>
