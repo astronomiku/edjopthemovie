@@ -233,14 +233,25 @@
       flex-shrink: 0;
     }
 
-    .header-release {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(16px, 1.8vw, 25px);
-      letter-spacing: .14em;
-      line-height: 1;
+    .release-bar {
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      z-index: 49;
+      padding: 9px 20px 10px;
+      background: rgba(5,5,5,.88);
+      border-top: 1px solid rgba(192,21,31,.22);
+      border-bottom: 1px solid rgba(192,21,31,.28);
       color: #c0151f;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(20px, 2.4vw, 34px);
+      letter-spacing: .16em;
+      line-height: 1;
+      text-align: center;
       text-transform: uppercase;
-      white-space: nowrap;
+      backdrop-filter: blur(10px);
+      pointer-events: none;
     }
 
     .logo img {
@@ -646,28 +657,18 @@
       /* header: show hamburger, hide desktop nav */
       header {
         position: fixed;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-          "brand menu"
-          "release release";
-        row-gap: 8px;
-        padding: 12px 20px 14px;
+        padding: 12px 20px;
         background: rgba(5,5,5,.95);
-        align-items: center;
       }
 
       nav { display: none; }
-      .hamburger { grid-area: menu; display: flex; justify-self: end; }
-      .header-brand { display: contents; }
-      .logo { grid-area: brand; height: 28px; justify-self: start; }
-      .header-release {
-        grid-area: release;
-        width: 100%;
-        text-align: center;
-        font-size: clamp(16px, 4.2vw, 22px);
+      .hamburger { display: flex; }
+      .logo { height: 28px; }
+      .release-bar {
+        top: 52px;
+        padding: 8px 16px 9px;
+        font-size: clamp(18px, 5.4vw, 26px);
         letter-spacing: .08em;
-        white-space: normal;
       }
 
       /* sections */
@@ -767,7 +768,6 @@
       <div class="logo" onclick="goToLanding()">
         <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
       </div>
-      <div class="header-release">Opens September 16, 2026</div>
     </div>
     <nav>
       <a href="#synopsis">About the Film</a>
@@ -780,6 +780,8 @@
       <span></span><span></span><span></span>
     </button>
   </header>
+
+  <div class="release-bar">Opens September 16, 2026</div>
 
   <!-- mobile nav drawer -->
   <div class="nav-drawer" id="nav-drawer">
