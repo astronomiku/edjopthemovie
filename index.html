@@ -234,11 +234,14 @@
     }
 
     .header-date {
+      height: 38px;
+      display: flex;
+      align-items: center;
       color: #c0151f;
       font-family: "Bebas Neue", sans-serif;
-      font-size: 38px;
+      font-size: 44px;
       letter-spacing: .16em;
-      line-height: 1;
+      line-height: .8;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -384,6 +387,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
+      width: 70%;
+      margin: 0 auto;
     }
 
     .cast-member { display: flex; flex-direction: column; gap: 0; }
@@ -731,13 +736,13 @@
       .hamburger { display: flex; justify-self: end; }
       .header-brand { gap: 10px; }
       .logo { height: 28px; }
-      .header-date { font-size: 28px; letter-spacing: .1em; }
+      .header-date { height: 28px; font-size: 32px; letter-spacing: .1em; }
       /* sections */
       section { padding: 64px 20px; }
       #synopsis { padding-top: 128px; }
 
       /* cast: single column on mobile */
-      .cast-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cast-grid { grid-template-columns: 1fr; gap: 48px; width: 100%; }
       .cast-photo img { height: 63vw; object-position: center 20%; }
       .cast-name { font-size: clamp(28px, 8vw, 48px); }
       .supporting-cast { margin-top: 48px; }
