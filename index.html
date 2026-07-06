@@ -542,20 +542,19 @@
     }
 
     .supporting-names {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 28px;
-      padding-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      padding-top: 24px;
       border-top: 1px solid rgba(255,255,255,.1);
     }
 
     .supporting-names .supporting-name {
-      margin-top: 0;
       font-size: clamp(18px, 1.6vw, 24px);
     }
 
-    .supporting-names .supporting-name:nth-child(odd) { color: var(--cool-3); }
-    .supporting-names .supporting-name:nth-child(even) { color: var(--warm-3); }
+    .supporting-names .supporting-member:nth-child(odd) .supporting-name { color: var(--cool-3); }
+    .supporting-names .supporting-member:nth-child(even) .supporting-name { color: var(--warm-3); }
 
     /* ─── SYNOPSIS ────────────────────────────────────────── */
     #synopsis {
@@ -768,7 +767,7 @@
       .cast-name { font-size: clamp(28px, 8vw, 48px); }
       .supporting-cast { margin-top: 48px; }
       .supporting-strip { grid-template-columns: 1fr; gap: 22px; }
-      .supporting-names { gap: 12px 22px; }
+      .supporting-names { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
       .supporting-name { font-size: 18px; }
 
       section { min-height: auto; padding: 80px 20px; }
@@ -950,10 +949,22 @@
         </div>
 
         <div class="supporting-names">
-          <div class="supporting-name">Teroy Guzman</div>
-          <div class="supporting-name">Nour Hooshmand</div>
-          <div class="supporting-name">Issa Litton</div>
-          <div class="supporting-name">Jethro Tenorio</div>
+          <div class="supporting-member">
+            <div class="supporting-photo placeholder">TG</div>
+            <div class="supporting-name">Teroy Guzman</div>
+          </div>
+          <div class="supporting-member">
+            <div class="supporting-photo"><img src="assets/nour.jpg" alt="Nour Hooshmand" /></div>
+            <div class="supporting-name">Nour Hooshmand</div>
+          </div>
+          <div class="supporting-member">
+            <div class="supporting-photo"><img src="assets/issa.jpg" alt="Issa Litton" /></div>
+            <div class="supporting-name">Issa Litton</div>
+          </div>
+          <div class="supporting-member">
+            <div class="supporting-photo"><img src="assets/jethro.jpg" alt="Jethro Tenorio" /></div>
+            <div class="supporting-name">Jethro Tenorio</div>
+          </div>
         </div>
       </div>
     </section>
