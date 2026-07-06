@@ -80,6 +80,17 @@
       filter: brightness(1.05) contrast(1.1);
     }
 
+    .landing-release {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(16px, 2.1vw, 30px);
+      letter-spacing: .18em;
+      line-height: 1;
+      color: #c0151f;
+      text-align: center;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
     /* trailer — always landscape 16:9, stable width */
     .trailer-wrap {
       width: clamp(320px, 82vw, 920px);
@@ -622,6 +633,7 @@
       /* landing */
       #landing { gap: 16px; padding: 32px 16px 40px; }
       .landing-title { width: 80vw; }
+      .landing-release { font-size: 13px; letter-spacing: .1em; max-width: 92vw; }
       .trailer-wrap { width: 96vw; }
       .cd-num  { font-size: clamp(34px, 10vw, 58px); }
       .cd-sep  { font-size: clamp(28px, 8vw, 50px); padding-bottom: 10px; }
@@ -696,6 +708,8 @@
   <div class="landing-title">
     <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
   </div>
+
+  <div class="landing-release">Opens September 16, 2026 Nationwide</div>
 
   <button id="enter-btn" onclick="enterSite()">
     <span>ENTER</span>
