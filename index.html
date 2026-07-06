@@ -231,19 +231,7 @@
       display: block;
       height: 38px;
       flex-shrink: 0;
-    }
-
-    .header-date {
-      height: 38px;
-      display: flex;
-      align-items: center;
-      color: #c0151f;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 44px;
-      letter-spacing: .16em;
-      line-height: .8;
-      text-transform: uppercase;
-      white-space: nowrap;
+      max-width: min(42vw, 360px);
     }
 
     .logo img {
@@ -735,8 +723,7 @@
       nav { display: none; }
       .hamburger { display: flex; justify-self: end; }
       .header-brand { gap: 10px; }
-      .logo { height: 28px; }
-      .header-date { height: 28px; font-size: 32px; letter-spacing: .1em; }
+      .logo { height: 28px; max-width: 62vw; }
       /* sections */
       section { padding: 64px 20px; }
       #synopsis { padding-top: 128px; }
@@ -836,9 +823,8 @@
   <header>
     <div class="header-brand">
       <div class="logo" onclick="goToLanding()">
-        <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
+        <img src="assets/edjopsept16.png" alt="EDJOP 09162026" />
       </div>
-      <div class="header-date">09162026</div>
     </div>
     <nav>
       <a href="#synopsis">About the Film</a>
@@ -917,7 +903,7 @@
             <div class="supporting-role">as "role"</div>
           </div>
           <div class="supporting-member">
-            <div class="supporting-photo placeholder">MLY</div>
+            <div class="supporting-photo"><img src="assets/menchu.jpg" alt="Menchu Lauchengco-Yulo" /></div>
             <div class="supporting-name">Menchu Lauchengco-Yulo</div>
             <div class="supporting-role">as "role"</div>
           </div>
@@ -930,7 +916,7 @@
 
         <div class="supporting-names">
           <div class="supporting-member">
-            <div class="supporting-photo placeholder">TG</div>
+            <div class="supporting-photo"><img src="assets/teroy.jpg" alt="Teroy Guzman" /></div>
             <div class="supporting-name">Teroy Guzman</div>
           </div>
           <div class="supporting-member">
