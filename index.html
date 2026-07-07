@@ -625,6 +625,14 @@
       transform: translateY(-2px);
     }
 
+    .social-icons a:active,
+    .social-icons a:focus-visible {
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.95)) drop-shadow(0 0 16px rgba(255,255,255,.75));
+      opacity: 1;
+      transform: translateY(-1px) scale(1.08);
+      outline: none;
+    }
+
     .social-icons img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
     .footer-social {
@@ -655,8 +663,8 @@
     }
 
     .footer-social a.tiktok-icon {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       overflow: hidden;
     }
 
