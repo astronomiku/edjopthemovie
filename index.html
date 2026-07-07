@@ -772,12 +772,13 @@
       #synopsis { padding-top: 128px; }
 
       /* cast: two-column cards on mobile */
-      .cast-grid { grid-template-columns: repeat(2, minmax(0, 150px)); gap: 28px 16px; width: 100%; max-width: 100%; padding: 0; }
+      .cast-grid { grid-template-columns: repeat(2, minmax(0, 150px)); gap: 28px 14px; width: 100%; max-width: 100%; padding: 0; }
       .cast-photo { width: min(160px, 42vw); height: min(160px, 42vw); }
       .cast-member.small { width: min(126px, 38vw); }
       .cast-member.small .cast-photo { width: min(126px, 38vw); height: min(126px, 38vw); }
-      .cast-name { font-size: clamp(20px, 6vw, 30px); }
-      .cast-name.long-name { font-size: clamp(16px, 4.8vw, 22px); letter-spacing: .01em; }
+      .cast-name { font-size: clamp(16px, 4.8vw, 22px); letter-spacing: .02em; max-width: 100%; overflow: hidden; text-overflow: clip; }
+      .cast-name.long-name,
+      .cast-member.small .cast-name { font-size: clamp(14px, 4.1vw, 18px); letter-spacing: 0; }
       .cast-role { font-size: 9px; letter-spacing: .12em; }
       .cast-info { gap: 6px; }
       .cast-bio-inline { font-size: 11px; line-height: 1.45; }
