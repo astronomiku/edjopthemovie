@@ -642,6 +642,10 @@
       flex-shrink: 0;
     }
 
+    .footer-social a:nth-child(-n+2) {
+      margin-right: 4px;
+    }
+
     .footer-logos {
       display: flex;
       align-items: center;
@@ -653,24 +657,18 @@
     }
 
     .footer-social a {
-      width: 17px;
-      height: 17px;
+      width: 32px;
+      height: 32px;
     }
 
-    .footer-social a.social-large {
-      width: 30px;
+    .footer-social img {
+      width: auto;
       height: 30px;
-    }
-
-    .footer-social a.tiktok-icon {
-      width: 30px;
-      height: 30px;
-      overflow: hidden;
+      max-width: 46px;
     }
 
     .footer-social a.tiktok-icon img {
-      transform: scale(1.12);
-      transform-origin: center;
+      transform: none;
     }
 
 
@@ -687,6 +685,12 @@
     .contact-credit {
       margin-top: 56px;
       text-align: center;
+    }
+
+    .contact-credit a {
+      color: #9dc4d8;
+      font-size: 1.18em;
+      opacity: 1;
     }
 
     .site-credit a {
@@ -865,10 +869,9 @@
       .footer-credit span { font-size: 9px; letter-spacing: .14em; }
       .footer-credit img { max-height: 24px; max-width: 86px; }
       .footer-social { width: 100%; justify-content: center; margin-left: 0; gap: 18px; }
-      .footer-social a { width: 16px; height: 16px; padding: 6px; box-sizing: content-box; }
-      .footer-social a.social-large { width: 26px; height: 26px; }
-      .footer-social a.tiktok-icon { width: 28px; height: 28px; overflow: hidden; }
-      .footer-social a.tiktok-icon img { transform: scale(1.12); }
+      .footer-social a { width: 30px; height: 30px; padding: 6px; box-sizing: content-box; }
+      .footer-social img { width: auto; height: 28px; max-width: 44px; }
+      .footer-social a.tiktok-icon img { transform: none; }
       .site-credit { width: 100%; text-align: center; font-size: 9px; }
       .contact-credit { margin-top: 42px; }
       .footer-logos { order: -1; width: 100%; justify-content: center; flex-wrap: wrap; gap: 8px 12px; margin-right: 0; }
@@ -1214,7 +1217,7 @@
       <a class="social-large" href="https://www.youtube.com/@OfficialEdjopTheMovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/youtube.png" alt="YouTube" />
       </a>
-      <a href="https://www.imdb.com/title/tt43339238/?ref_=fn_t_1" target="_blank" rel="noopener noreferrer">
+      <a class="imdb-icon" href="https://www.imdb.com/title/tt43339238/?ref_=fn_t_1" target="_blank" rel="noopener noreferrer">
         <img src="assets/imdblogo.png" alt="IMDb" />
       </a>
     </div>
