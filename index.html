@@ -656,32 +656,18 @@
       flex-wrap: wrap;
     }
 
-    .footer-social a {
-      width: 24px;
-      height: 24px;
-    }
-
-    .footer-social.social-icons a {
-      width: 24px;
-      height: 24px;
-    }
-
     .footer-social.social-icons img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .footer-social a.social-large,
-    .footer-social a.imdb-icon,
-    .footer-social a.tiktok-icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .footer-social a.tiktok-icon {
-      overflow: hidden;
-    }
+    .footer-social a.facebook-icon { width: 24px; height: 24px; }
+    .footer-social a.instagram-icon { width: 24px; height: 24px; }
+    .footer-social a.x-icon { width: 24px; height: 24px; }
+    .footer-social a.tiktok-icon { width: 24px; height: 24px; overflow: hidden; }
+    .footer-social a.youtube-icon { width: 24px; height: 24px; }
+    .footer-social a.imdb-icon { width: 24px; height: 24px; }
 
     .footer-social a.tiktok-icon img {
       transform: scale(1.35);
@@ -702,12 +688,14 @@
     .contact-credit {
       margin-top: 56px;
       text-align: center;
+      font-size: 13px;
     }
 
     .contact-credit a {
       color: #9dc4d8;
       font-size: 1.18em;
       opacity: 1;
+      font-weight: 700;
     }
 
     .site-credit a {
@@ -886,12 +874,14 @@
       .footer-credit span { font-size: 9px; letter-spacing: .14em; }
       .footer-credit img { max-height: 24px; max-width: 86px; }
       .footer-social { width: 100%; justify-content: center; margin-left: 0; gap: 18px; }
-      .footer-social a { width: 22px; height: 22px; padding: 6px; box-sizing: content-box; }
-      .footer-social.social-icons a { width: 22px; height: 22px; }
+      .footer-social a { padding: 6px; box-sizing: content-box; }
       .footer-social.social-icons img { width: 100%; height: 100%; object-fit: contain; }
-      .footer-social a.social-large,
-      .footer-social a.imdb-icon,
-      .footer-social a.tiktok-icon { width: 22px; height: 22px; }
+      .footer-social a.facebook-icon { width: 22px; height: 22px; }
+      .footer-social a.instagram-icon { width: 22px; height: 22px; }
+      .footer-social a.x-icon { width: 22px; height: 22px; }
+      .footer-social a.tiktok-icon { width: 22px; height: 22px; overflow: hidden; }
+      .footer-social a.youtube-icon { width: 22px; height: 22px; }
+      .footer-social a.imdb-icon { width: 22px; height: 22px; }
       .footer-social a.tiktok-icon img { transform: scale(1.3); transform-origin: center; }
       .site-credit { width: 100%; text-align: center; font-size: 9px; }
       .contact-credit { margin-top: 42px; }
@@ -1223,19 +1213,19 @@
     </div>
     </div>
     <div class="social-icons footer-social">
-      <a href="https://www.facebook.com/EDJOPTheMovie" target="_blank" rel="noopener noreferrer">
+      <a class="facebook-icon" href="https://www.facebook.com/EDJOPTheMovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/fblogo.png" alt="Facebook" />
       </a>
-      <a href="https://www.instagram.com/EDJOPTheMovie" target="_blank" rel="noopener noreferrer">
+      <a class="instagram-icon" href="https://www.instagram.com/EDJOPTheMovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/IGlogo.png" alt="Instagram" />
       </a>
-      <a href="https://x.com/edjopthemovie" target="_blank" rel="noopener noreferrer">
+      <a class="x-icon" href="https://x.com/edjopthemovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/xlogo.png" alt="X" />
       </a>
       <a class="tiktok-icon" href="https://www.tiktok.com/@edjopthemovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/tiktok.png" alt="TikTok" />
       </a>
-      <a class="social-large" href="https://www.youtube.com/@OfficialEdjopTheMovie" target="_blank" rel="noopener noreferrer">
+      <a class="youtube-icon" href="https://www.youtube.com/@OfficialEdjopTheMovie" target="_blank" rel="noopener noreferrer">
         <img src="assets/youtube.png" alt="YouTube" />
       </a>
       <a class="imdb-icon" href="https://www.imdb.com/title/tt43339238/?ref_=fn_t_1" target="_blank" rel="noopener noreferrer">
