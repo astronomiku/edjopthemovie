@@ -406,15 +406,6 @@
       min-width: 0;
     }
 
-    .cast-member.small {
-      width: 158px;
-      justify-self: center;
-    }
-
-    .cast-member.small .cast-name {
-      font-size: clamp(18px, 1.35vw, 24px);
-      letter-spacing: .02em;
-    }
 
     .cast-photo {
       position: relative;
@@ -427,10 +418,6 @@
       padding: 0;
     }
 
-    .cast-member.small .cast-photo {
-      width: 158px;
-      height: 158px;
-    }
 
     button.cast-photo {
       cursor: pointer;
@@ -774,11 +761,8 @@
       /* cast: two-column cards on mobile */
       .cast-grid { grid-template-columns: repeat(2, minmax(0, 150px)); gap: 28px 14px; width: 100%; max-width: 100%; padding: 0; }
       .cast-photo { width: min(160px, 42vw); height: min(160px, 42vw); }
-      .cast-member.small { width: min(126px, 38vw); }
-      .cast-member.small .cast-photo { width: min(126px, 38vw); height: min(126px, 38vw); }
       .cast-name { font-size: clamp(16px, 4.8vw, 22px); letter-spacing: .02em; max-width: 100%; overflow: hidden; text-overflow: clip; }
-      .cast-name.long-name,
-      .cast-member.small .cast-name { font-size: clamp(14px, 4.1vw, 18px); letter-spacing: 0; }
+      .cast-name.long-name { font-size: clamp(14px, 4.1vw, 18px); letter-spacing: 0; }
       .cast-role { font-size: 9px; letter-spacing: .12em; }
       .cast-info { gap: 6px; }
       .cast-bio-inline { display: none; }
@@ -939,7 +923,7 @@
 
         <div class="cast-member">
           <button class="cast-photo bio-trigger" type="button" data-name="Menchu Lauchengco-Yulo" data-role="as Joy Asuncion Jopson" data-bio="Widely regarded as the first lady of Philippine musical theatre, Menchu Lauchengco-Yulo has spent decades commanding the stage in productions like Miss Saigon, Sweeney Todd, and Next to Normal. She is Artistic Director of Resorts World Manila's theater arm and a founding member of Actor's Actor Inc.">
-            <img src="assets/menchu.jpeg" alt="Menchu Lauchengco-Yulo as Joy Asuncion Jopson" />
+            <img src="assets/menchu.png" alt="Menchu Lauchengco-Yulo as Joy Asuncion Jopson" />
           </button>
           <div class="cast-info">
             <div class="cast-name long-name">Menchu Lauchengco-Yulo</div>
@@ -983,7 +967,7 @@
 
         <div class="cast-member">
           <button class="cast-photo bio-trigger" type="button" data-name="Issa Litton" data-role="as Josefa Jopson" data-bio="An actress, theater performer, host, and entrepreneur, Issa Litton has starred in Smaller and Smaller Circles and He's Into Her, with stage credits at Repertory Philippines and Dulaang UP. She is also President of 1Lit Corp, a talent training and hosting consultancy.">
-            <img src="assets/issa.jpg" alt="Issa Litton as Josefa Jopson" />
+            <img src="assets/issa.png" alt="Issa Litton as Josefa Jopson" />
           </button>
           <div class="cast-info">
             <div class="cast-name">Issa Litton</div>
@@ -993,7 +977,9 @@
         </div>
 
         <div class="cast-member">
-          <button class="cast-photo placeholder bio-trigger" type="button" data-name="Thea Marabut" data-role="as Inday" data-bio="A member of SPIT (Silly People's Improv Theater) Manila, one of the country's longest-running improv groups, Thea Marabut has built her craft on stage through spontaneous, character-driven storytelling, training that lends a lived-in naturalism to her dramatic work.">T</button>
+          <button class="cast-photo bio-trigger" type="button" data-name="Thea Marabut" data-role="as Inday" data-bio="A member of SPIT (Silly People's Improv Theater) Manila, one of the country's longest-running improv groups, Thea Marabut has built her craft on stage through spontaneous, character-driven storytelling, training that lends a lived-in naturalism to her dramatic work.">
+            <img src="assets/thea.png" alt="Thea Marabut as Inday" />
+          </button>
           <div class="cast-info">
             <div class="cast-name">Thea Marabut</div>
             <div class="cast-role">as Inday</div>
@@ -1012,7 +998,7 @@
           <p class="cast-bio-inline cast-bio-desktop">An actress and singer trained in theater arts at UP Diliman, Nour Hooshmand has built a rising profile through <em>Blue Room</em>, <em>Agapito</em>, and Arvin Belarmino's upcoming feature <em>Ria</em>.</p>
         </div>
 
-        <div class="cast-member small">
+        <div class="cast-member">
           <div class="cast-photo">
             <img src="assets/jethro.jpg" alt="Jethro Tenorio" />
           </div>
@@ -1022,16 +1008,16 @@
           </div>
         </div>
 
-        <div class="cast-member small">
-          <div class="cast-photo placeholder">N</div>
+        <div class="cast-member">
+          <div class="cast-photo"><img src="assets/nico.png" alt="Nico Locco as Thomas" /></div>
           <div class="cast-info">
             <div class="cast-name">Nico Locco</div>
             <div class="cast-role">as Thomas</div>
           </div>
         </div>
 
-        <div class="cast-member small">
-          <div class="cast-photo placeholder">J</div>
+        <div class="cast-member">
+          <div class="cast-photo"><img src="assets/jerome.png" alt="Jerome Dawis as Freddie" /></div>
           <div class="cast-info">
             <div class="cast-name">Jerome Dawis</div>
             <div class="cast-role">as Freddie</div>
