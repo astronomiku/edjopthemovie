@@ -638,9 +638,10 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 14px;
+      gap: clamp(12px, 2vw, 28px);
       margin-right: auto;
       min-width: 0;
+      flex-wrap: wrap;
     }
 
     .footer-social a {
@@ -651,6 +652,37 @@
     .footer-social a.social-large {
       width: 28px;
       height: 28px;
+    }
+
+    .footer-social a.tiktok-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .site-credit {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: var(--cream);
+      opacity: .56;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .contact-credit {
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .site-credit a {
+      color: var(--cream);
+      text-decoration: none;
+      transition: color .2s, opacity .2s;
+    }
+
+    .site-credit a:hover {
+      color: var(--cool-3);
+      opacity: 1;
     }
 
     /* ─── FOOTER ──────────────────────────────────────────── */
@@ -677,8 +709,9 @@
     .footer-credit {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 4px;
       min-width: 0;
+      flex-shrink: 1;
     }
 
     .footer-credit span {
@@ -689,26 +722,24 @@
       opacity: .62;
       white-space: nowrap;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .footer-credit img {
       display: block;
-      margin-left: -4px;
-      max-width: clamp(70px, 9vw, 132px);
+      width: auto;
+      max-width: clamp(54px, 8vw, 118px);
       max-height: 34px;
       object-fit: contain;
+      flex-shrink: 1;
     }
 
     .footer-credit.produced img {
-      max-width: clamp(72px, 8vw, 118px);
+      max-width: clamp(54px, 7vw, 104px);
     }
 
     .footer-credit.produced {
-      gap: 0;
-    }
-
-    .footer-credit.produced img + img {
-      margin-left: -14px;
+      gap: 4px;
     }
 
 
@@ -821,7 +852,10 @@
       .footer-social { width: 100%; justify-content: center; margin-left: 0; }
       .footer-social a { width: 16px; height: 16px; }
       .footer-social a.social-large { width: 24px; height: 24px; }
-      .footer-logos { order: -1; width: 100%; justify-content: center; flex-wrap: wrap; gap: 6px 10px; margin-right: 0; }
+      .footer-social a.tiktok-icon { width: 28px; height: 28px; }
+      .site-credit { width: 100%; text-align: center; font-size: 9px; }
+      .contact-credit { margin-top: 42px; }
+      .footer-logos { order: -1; width: 100%; justify-content: center; flex-wrap: wrap; gap: 8px 12px; margin-right: 0; }
 
       h2 { font-size: clamp(34px, 10vw, 60px); margin-bottom: 24px; }
       p  { font-size: 15px; }
@@ -1120,6 +1154,7 @@
     <section id="contact">
       <h2>Contact Us</h2>
       <p>For all inquiries, email <a href="mailto:info@edjopthemovie.com">info@edjopthemovie.com</a>.</p>
+      <div class="site-credit contact-credit">Website by <a href="https://themadgoats.com" target="_blank" rel="noopener noreferrer">TMGI</a></div>
     </section>
 
   </main>
