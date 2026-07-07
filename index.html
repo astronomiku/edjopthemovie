@@ -320,7 +320,7 @@
 
     .news-meta {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .22em;
       color: var(--warm-3);
       opacity: .9;
@@ -373,176 +373,202 @@
 
     .cast-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      width: 70%;
+      grid-template-columns: repeat(auto-fit, 220px);
+      gap: 34px 26px;
+      justify-content: center;
+      align-items: start;
+      width: 100%;
+      max-width: 1254px;
       margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
     }
 
-    .cast-member { display: flex; flex-direction: column; gap: 0; }
+    @media (min-width: 821px) {
+      .cast-grid {
+        grid-template-columns: repeat(3, 220px);
+      }
+    }
 
-    .cast-photo { position: relative; overflow: hidden; }
+    @media (min-width: 1020px) {
+      .cast-grid {
+        grid-template-columns: repeat(auto-fit, 220px);
+      }
+    }
+
+    @media (min-width: 1320px) {
+      .cast-grid {
+        grid-template-columns: repeat(5, 220px);
+      }
+    }
+
+    .cast-member {
+      min-width: 0;
+    }
+
+    .cast-member.small {
+      width: 158px;
+      justify-self: center;
+    }
+
+    .cast-photo {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      display: block;
+      padding: 0;
+    }
+
+    .cast-member.small .cast-photo {
+      width: 158px;
+      height: 158px;
+    }
+
+    button.cast-photo {
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+    }
 
     .cast-photo img {
       width: 100%;
-      height: 294px;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
       display: block;
+      transition: transform .25s, filter .25s;
     }
 
     .cast-photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(5,5,5,.7) 100%);
+      background: linear-gradient(to bottom, transparent 55%, rgba(5,5,5,.68) 100%);
       pointer-events: none;
     }
 
-    /* warm overlay — Elijah */
-    .cast-member.warm .cast-photo img {
-      filter: sepia(.25) saturate(1.1) brightness(.88);
-    }
-    .cast-member.warm .cast-photo::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 60px rgba(200,97,26,.3);
-      z-index: 1;
-      pointer-events: none;
+    button.cast-photo:hover img,
+    button.cast-photo:focus-visible img {
+      transform: scale(1.035);
+      filter: brightness(1.08);
     }
 
-    /* Jodi photo intentionally keeps its original color. */
-
-    .cast-info {
-      padding: 24px 0 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .cast-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 3.5vw, 52px);
-      letter-spacing: .1em;
-      line-height: 1;
-    }
-
-    .cast-member.warm .cast-name { color: var(--warm-3); }
-    .cast-member.cool .cast-name { color: var(--cool-3); }
-
-    .cast-role {
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      opacity: .5;
-      font-style: italic;
-    }
-
-    .divider-warm {
-      width: 36px; height: 2px;
-      background: var(--warm-1);
-      margin: 4px 0;
-    }
-
-    .divider-cool {
-      width: 36px; height: 2px;
-      background: var(--cool-2);
-      margin: 4px 0;
-    }
-
-    .supporting-cast {
-      margin-top: 64px;
-    }
-
-    .supporting-cast h3 {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(28px, 3.4vw, 48px);
-      letter-spacing: .12em;
-      line-height: 1;
-      color: var(--cream);
-      margin-bottom: 22px;
-    }
-
-    .supporting-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 210px));
-      gap: 24px;
-      max-width: 720px;
-      width: 100%;
-      margin: 0 auto 34px;
-      justify-content: center;
-    }
-
-    .supporting-member {
-      min-width: 0;
-    }
-
-    .supporting-photo {
-      aspect-ratio: 1;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-    }
-
-    .supporting-photo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center top;
-      filter: saturate(.9) brightness(.9);
-    }
-
-    .supporting-photo.placeholder {
+    .cast-photo.placeholder {
       display: grid;
       place-items: center;
       color: rgba(240,235,224,.42);
       font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(28px, 3vw, 42px);
-      letter-spacing: .12em;
+      font-size: 44px;
+      letter-spacing: .1em;
     }
 
-    .supporting-name {
-      margin-top: 12px;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(18px, 1.8vw, 26px);
+    .cast-photo.placeholder::after {
+      display: none;
+    }
+
+    .cast-info {
+      padding: 14px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cast-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(24px, 2vw, 34px);
       letter-spacing: .08em;
-      line-height: 1.05;
-      color: var(--cream);
+      line-height: 1;
     }
 
-    .supporting-member:nth-child(odd) .supporting-name { color: var(--warm-3); }
-    .supporting-member:nth-child(even) .supporting-name { color: var(--cool-3); }
+    .cast-member:nth-child(odd) .cast-name { color: var(--warm-3); }
+    .cast-member:nth-child(even) .cast-name { color: var(--cool-3); }
 
-    .supporting-role {
-      margin-top: 6px;
+    .cast-role {
       font-size: 11px;
-      letter-spacing: .2em;
+      letter-spacing: .16em;
+      line-height: 1.45;
       text-transform: uppercase;
-      opacity: .52;
+      opacity: .58;
       font-style: italic;
     }
 
-    .supporting-names {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 170px));
-      gap: 18px;
-      max-width: 760px;
-      width: 100%;
-      margin: 0 auto;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,.1);
+    .cast-bio-inline {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.55;
+      opacity: .78;
+    }
+
+    .cast-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: none;
+      align-items: center;
       justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,.72);
     }
 
-    .supporting-names .supporting-name {
-      font-size: clamp(18px, 1.6vw, 24px);
+    .cast-modal.open {
+      display: flex;
     }
 
-    .supporting-names .supporting-member:nth-child(odd) .supporting-name { color: var(--cool-3); }
-    .supporting-names .supporting-member:nth-child(even) .supporting-name { color: var(--warm-3); }
+    .cast-modal-panel {
+      width: min(620px, 92vw);
+      max-height: min(78vh, 620px);
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(8,8,8,.96);
+      padding: 28px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+    }
+
+    .cast-modal-close {
+      float: right;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: transparent;
+      color: var(--cream);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .cast-modal-close:hover {
+      border-color: var(--cool-3);
+      color: var(--cool-3);
+    }
+
+    .cast-modal-name {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(32px, 6vw, 52px);
+      letter-spacing: .08em;
+      line-height: 1;
+      color: var(--warm-3);
+      padding-right: 44px;
+    }
+
+    .cast-modal-role {
+      margin-top: 8px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .62;
+      font-style: italic;
+    }
+
+    .cast-modal-bio {
+      margin-top: 22px;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: .86;
+    }
+
 
     /* ─── SYNOPSIS ────────────────────────────────────────── */
     #synopsis {
@@ -733,14 +759,17 @@
       section { padding: 64px 20px; }
       #synopsis { padding-top: 128px; }
 
-      /* cast: single column on mobile */
-      .cast-grid { grid-template-columns: 1fr; gap: 48px; width: 100%; }
-      .cast-photo img { height: 63vw; object-position: center 20%; }
-      .cast-name { font-size: clamp(28px, 8vw, 48px); }
-      .supporting-cast { margin-top: 48px; }
-      .supporting-strip { grid-template-columns: 1fr; gap: 22px; width: 100%; }
-      .supporting-names { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: 100%; }
-      .supporting-name { font-size: 18px; }
+      /* cast: two-column cards on mobile */
+      .cast-grid { grid-template-columns: repeat(2, minmax(0, 150px)); gap: 28px 16px; width: 100%; max-width: 100%; padding: 0; }
+      .cast-photo { width: min(160px, 42vw); height: min(160px, 42vw); }
+      .cast-member.small { width: min(126px, 38vw); }
+      .cast-member.small .cast-photo { width: min(126px, 38vw); height: min(126px, 38vw); }
+      .cast-name { font-size: clamp(20px, 6vw, 30px); }
+      .cast-role { font-size: 9px; letter-spacing: .12em; }
+      .cast-bio-inline { font-size: 11px; line-height: 1.5; }
+      .cast-bio-desktop { display: none; }
+      .cast-modal { padding: 14px; }
+      .cast-modal-panel { width: 92vw; max-height: 82vh; padding: 22px; }
 
       section { min-height: auto; padding: 80px 20px; }
 
@@ -869,76 +898,141 @@
     <!-- CAST -->
     <section id="cast">
       <h2>Cast</h2>
-      <div class="cast-grid">
 
-        <!-- ELIJAH — warm -->
-        <div class="cast-member warm">
+      <div class="cast-grid">
+        <div class="cast-member">
           <div class="cast-photo">
             <img src="assets/elijah.jpg" alt="Elijah Canlas as Edgar Jopson" />
           </div>
           <div class="cast-info">
             <div class="cast-name">Elijah Canlas</div>
-            <div class="divider-warm"></div>
             <div class="cast-role">as Edgar "Edjop" Jopson</div>
-            <p style="margin-top:12px;">Elijah Canlas is a Filipino actor and performer whose work spans film, television, music and theater. He began acting at age 14 with <em>Sundalong Kanin</em>, an independent entry to the Cinemalaya Philippine Independent Film Festival. Canlas' breakthrough performance came in <em>Kalel, 15</em>, earning him Best Actor honors at the 43rd Gawad Urian Awards, 68th FAMAS Awards, the 17th Asian Film Festival in Rome, and the Harlem International Film Festival, among others. In 2020, he was named "Actor of the Year" by CNN Philippines. His recent work includes ensemble and leading roles in both drama and genre projects, establishing him as one of the most dynamic actors of his generation in Philippine cinema.</p>
+            <p class="cast-bio-inline">Elijah Canlas is a Filipino actor and performer whose work spans film, television, music, and theater. His breakthrough role in <em>Kalel, 15</em> earned him Best Actor honors from Gawad Urian, FAMAS, the Asian Film Festival in Rome, and the Harlem International Film Festival.</p>
           </div>
         </div>
 
-        <!-- JODI — cool -->
-        <div class="cast-member cool">
+        <div class="cast-member">
           <div class="cast-photo">
-            <img src="assets/jodi.jpg" alt="Jodi Sta. Maria" />
+            <img src="assets/jodi.jpg" alt="Jodi Sta. Maria as Joyette Jopson" />
           </div>
           <div class="cast-info">
             <div class="cast-name">Jodi Sta. Maria</div>
-            <div class="divider-cool"></div>
             <div class="cast-role">as Joyette Jopson</div>
-            <p style="margin-top:12px;">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in a wide range of genres, from drama and romance to horror and television serials. Sta. Maria has received multiple nominations from the FAMAS and Gawad Urian Awards and won Best Drama Actress at the Asian Academy Creative Awards in 2022. She was also nominated for Best Performance by an Actress at the 44th International Emmy Awards for her television work. Dubbed by some as one of the Philippines' most compelling performers, she brings depth and presence to every role she undertakes.</p>
+            <p class="cast-bio-inline">Jodi Sta. Maria is a Filipino actress and producer celebrated for her versatility across film, television, and independent cinema. With a career spanning more than two decades, she has delivered acclaimed performances in drama, romance, horror, and television serials, earning major award recognition in the Philippines and abroad.</p>
           </div>
         </div>
 
-      </div>
-
-      <div class="supporting-cast">
-        <h3>Supporting Cast</h3>
-        <div class="supporting-strip">
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/kakie.jpg" alt="Kakie Pangilinan" /></div>
-            <div class="supporting-name">Kakie Pangilinan</div>
-            <div class="supporting-role">as Young Joy</div>
+        <div class="cast-member">
+          <div class="cast-photo">
+            <img src="assets/menchu.jpg" alt="Menchu Lauchengco-Yulo as Joy Asuncion Jopson" />
           </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/menchu.jpg" alt="Menchu Lauchengco-Yulo" /></div>
-            <div class="supporting-name">Menchu Lauchengco-Yulo</div>
-            <div class="supporting-role">as Joy</div>
-          </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/cedrick.jpg" alt="Cedrick Juan" /></div>
-            <div class="supporting-name">Cedrick Juan</div>
-            <div class="supporting-role">as Noy</div>
+          <div class="cast-info">
+            <div class="cast-name">Menchu Lauchengco-Yulo</div>
+            <div class="cast-role">as Joy Asuncion Jopson</div>
+            <p class="cast-bio-inline">Widely regarded as the "first lady" of Philippine musical theatre, Menchu Lauchengco-Yulo has spent decades commanding the stage in productions like <em>Miss Saigon</em>, <em>Sweeney Todd</em>, and <em>Next to Normal</em>. She is Artistic Director of Resorts World Manila's theater arm and a founding member of Actor's Actor Inc.</p>
           </div>
         </div>
 
-        <div class="supporting-names">
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/teroy.jpg" alt="Teroy Guzman" /></div>
-            <div class="supporting-name">Teroy Guzman</div>
+        <div class="cast-member">
+          <div class="cast-photo">
+            <img src="assets/kakie.jpg" alt="Kakie Pangilinan as young Joy Jopson" />
           </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/nour.jpg" alt="Nour Hooshmand" /></div>
-            <div class="supporting-name">Nour Hooshmand</div>
+          <div class="cast-info">
+            <div class="cast-name">Kakie Pangilinan</div>
+            <div class="cast-role">as young Joy Jopson</div>
+            <p class="cast-bio-inline">Frankie "Kakie" Pangilinan marks her acting debut in EDJOP. A newcomer to the entertainment industry, Kakie is no stranger to media or political controversy, owing to her parents. A singer-songwriter who launched an album under her own indie label in 2024, she brings a vocal youth activist's fire to her first-ever film role.</p>
           </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/issa.jpg" alt="Issa Litton" /></div>
-            <div class="supporting-name">Issa Litton</div>
+        </div>
+ 
+        <div class="cast-member">
+          <button class="cast-photo bio-trigger" type="button" data-name="Cedrick Juan" data-role="as Noy Jopson" data-bio="A Metro Manila Film Festival Best Actor winner for his portrayal of Fr. Jose Burgos in GomBurZa (2023), Paul Cedrick Gutierrez Juan built his craft first in theater before breaking into film with credits like Die Beautiful, The Panti Sisters, and Kalel, 15. He is also an advocate for HIV awareness.">
+            <img src="assets/cedrick.jpg" alt="Cedrick Juan as Noy Jopson" />
+          </button>
+          <div class="cast-info">
+            <div class="cast-name">Cedrick Juan</div>
+            <div class="cast-role">as Noy Jopson</div>
           </div>
-          <div class="supporting-member">
-            <div class="supporting-photo"><img src="assets/jethro.jpg" alt="Jethro Tenorio" /></div>
-            <div class="supporting-name">Jethro Tenorio</div>
+          <p class="cast-bio-inline cast-bio-desktop">A Metro Manila Film Festival Best Actor winner for his portrayal of Fr. Jose Burgos in <em>GomBurZa</em>, Cedrick Juan built his craft in theater before breaking into film with credits like <em>Die Beautiful</em>, <em>The Panti Sisters</em>, and <em>Kalel, 15</em>.</p>
+        </div>
+
+        <div class="cast-member">
+          <button class="cast-photo bio-trigger" type="button" data-name="Teroy Guzman" data-role="as Hernan Jopson" data-bio="A veteran stage and screen actor with Tanghalang Pilipino and Repertory Philippines, Teroy Guzman has appeared in Citizen Jake, History of Ha, and Ang Probinsyano, alongside a long list of theater credits including The Dresser.">
+            <img src="assets/teroy.jpg" alt="Teroy Guzman as Hernan Jopson" />
+          </button>
+          <div class="cast-info">
+            <div class="cast-name">Teroy Guzman</div>
+            <div class="cast-role">as Hernan Jopson</div>
+          </div>
+          <p class="cast-bio-inline cast-bio-desktop">A veteran stage and screen actor with Tanghalang Pilipino and Repertory Philippines, Teroy Guzman has appeared in <em>Citizen Jake</em>, <em>History of Ha</em>, and <em>Ang Probinsyano</em>, alongside theater credits including <em>The Dresser</em>.</p>
+        </div>
+
+        <div class="cast-member">
+          <button class="cast-photo bio-trigger" type="button" data-name="Issa Litton" data-role="as Josefa Jopson" data-bio="An actress, theater performer, host, and entrepreneur, Issa Litton has starred in Smaller and Smaller Circles and He's Into Her, with stage credits at Repertory Philippines and Dulaang UP. She is also President of 1Lit Corp, a talent training and hosting consultancy.">
+            <img src="assets/issa.jpg" alt="Issa Litton as Josefa Jopson" />
+          </button>
+          <div class="cast-info">
+            <div class="cast-name">Issa Litton</div>
+            <div class="cast-role">as Josefa Jopson</div>
+          </div>
+          <p class="cast-bio-inline cast-bio-desktop">An actress, theater performer, host, and entrepreneur, Issa Litton has starred in <em>Smaller and Smaller Circles</em> and <em>He's Into Her</em>, with stage credits at Repertory Philippines and Dulaang UP.</p>
+        </div>
+
+        <div class="cast-member">
+          <button class="cast-photo bio-trigger" type="button" data-name="Thea Ma" data-role="as Inday" data-bio="A member of SPIT (Silly People's Improv Theater) Manila, one of the country's longest-running improv groups, Thea has built her craft on stage through spontaneous, character-driven storytelling, training that lends a lived-in naturalism to her dramatic work.">
+            <img src="assets/thea.jpg" alt="Thea Ma as Inday" />
+          </button>
+          <div class="cast-info">
+            <div class="cast-name">Thea Ma</div>
+            <div class="cast-role">as Inday</div>
+          </div>
+          <p class="cast-bio-inline cast-bio-desktop">A member of SPIT Manila, one of the country's longest-running improv groups, Thea Ma has built her craft through spontaneous, character-driven storytelling.</p>
+        </div>
+
+        <div class="cast-member">
+          <button class="cast-photo bio-trigger" type="button" data-name="Nour Hooshmand" data-role="as Sucel" data-bio="An actress and singer who trained in theater arts at UP Diliman, Nour Hooshmand has built a rising profile through Blue Room (Cinemalaya), the short film Agapito (Cannes Short Film Competition 2025), and the lead role in Arvin Belarmino's upcoming feature Ria.">
+            <img src="assets/nour.jpg" alt="Nour Hooshmand as Sucel" />
+          </button>
+          <div class="cast-info">
+            <div class="cast-name">Nour Hooshmand</div>
+            <div class="cast-role">as Sucel</div>
+          </div>
+          <p class="cast-bio-inline cast-bio-desktop">An actress and singer trained in theater arts at UP Diliman, Nour Hooshmand has built a rising profile through <em>Blue Room</em>, <em>Agapito</em>, and Arvin Belarmino's upcoming feature <em>Ria</em>.</p>
+        </div>
+
+        <div class="cast-member small">
+          <div class="cast-photo">
+            <img src="assets/jethro.jpg" alt="Jethro Tenorio" />
+          </div>
+          <div class="cast-info">
+            <div class="cast-name">Jethro Tenorio</div>
+          </div>
+        </div>
+
+        <div class="cast-member small">
+          <div class="cast-photo placeholder">N</div>
+          <div class="cast-info">
+            <div class="cast-name">Nico</div>
+          </div>
+        </div>
+
+        <div class="cast-member small">
+          <div class="cast-photo placeholder">J</div>
+          <div class="cast-info">
+            <div class="cast-name">Jerome</div>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="cast-modal" id="cast-modal" aria-hidden="true">
+      <div class="cast-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cast-modal-name">
+        <button class="cast-modal-close" type="button" aria-label="Close cast bio">&times;</button>
+        <div class="cast-modal-name" id="cast-modal-name"></div>
+        <div class="cast-modal-role" id="cast-modal-role"></div>
+        <p class="cast-modal-bio" id="cast-modal-bio"></p>
+      </div>
+    </div>
+
 
     <section id="news">
       <h2>News</h2>
@@ -1141,6 +1235,45 @@
     reduceMotion.addListener(startEmbers);
   }
   startEmbers();
+
+
+  // ── Cast bio modal ──────────────────────────────────────────
+  const castModal = document.getElementById('cast-modal');
+  const castModalName = document.getElementById('cast-modal-name');
+  const castModalRole = document.getElementById('cast-modal-role');
+  const castModalBio = document.getElementById('cast-modal-bio');
+  const castModalClose = document.querySelector('.cast-modal-close');
+
+  function openCastBio(trigger) {
+    castModalName.textContent = trigger.dataset.name || '';
+    castModalRole.textContent = trigger.dataset.role || '';
+    castModalBio.textContent = trigger.dataset.bio || '';
+    castModal.classList.add('open');
+    castModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflowY = 'hidden';
+    castModalClose.focus();
+  }
+
+  function closeCastBio() {
+    castModal.classList.remove('open');
+    castModal.setAttribute('aria-hidden', 'true');
+    if (document.getElementById('site').classList.contains('visible')) {
+      document.body.style.overflowY = 'auto';
+    }
+  }
+
+  document.querySelectorAll('.bio-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => openCastBio(trigger));
+  });
+
+  castModalClose.addEventListener('click', closeCastBio);
+  castModal.addEventListener('click', (event) => {
+    if (event.target === castModal) closeCastBio();
+  });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && castModal.classList.contains('open')) closeCastBio();
+  });
+
 
   // ── Mobile nav ───────────────────────────────────────────────
   function toggleNav() {
