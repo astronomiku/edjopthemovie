@@ -98,14 +98,64 @@
       width: clamp(320px, 82vw, 920px);
       aspect-ratio: 16 / 9;
       flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: #000;
       box-shadow: 0 0 80px rgba(200,97,26,.18);
     }
 
-    .trailer-wrap iframe {
+    .trailer-wrap iframe,
+    .trailer-poster {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
+    }
+
+    .trailer-poster {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      border: 0;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .trailer-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trailer-poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22));
+    }
+
+    .trailer-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: clamp(70px, 10vw, 118px);
+      height: clamp(48px, 7vw, 80px);
+      transform: translate(-50%, -50%);
+      border-radius: 18px;
+      background: #c0151f;
+      box-shadow: 0 0 28px rgba(0,0,0,.55);
+    }
+
+    .trailer-play::after {
+      content: "";
+      position: absolute;
+      left: 54%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 22px solid #fff;
     }
 
     /* countdown */
@@ -913,14 +963,11 @@
     <span>ENTER</span>
   </button>
 
-  <div class="trailer-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/VldT1Dj5AfU?si=g2asfuShymuwgjFw"
-      title="EDJOP Trailer"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+  <div class="trailer-wrap" id="trailer-wrap">
+    <button class="trailer-poster" type="button" id="trailer-poster" aria-label="Play EDJOP trailer">
+      <img src="assets/trailerposter.jpeg" alt="EDJOP trailer" />
+      <span class="trailer-play" aria-hidden="true"></span>
+    </button>
   </div>
 
   <div id="countdown">
@@ -1283,6 +1330,16 @@
     const landing = document.getElementById('landing');
     landing.classList.remove('gone');
     document.body.style.overflowY = 'hidden';
+
+  const trailerWrap = document.getElementById("trailer-wrap");
+  const trailerPoster = document.getElementById("trailer-poster");
+
+  if (trailerWrap && trailerPoster) {
+    trailerPoster.addEventListener("click", () => {
+      trailerWrap.innerHTML = "<iframe src=\"https://www.youtube.com/embed/mc62f8lIqqU?si=QpxDpSYvsK-CSjtB&autoplay=1\" title=\"EDJOP Trailer\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>";
+    }, { once: true });
+  }
+
     window.scrollTo(0, 0);
     closeNav();
   }
