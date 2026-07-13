@@ -1330,21 +1330,20 @@
     const landing = document.getElementById('landing');
     landing.classList.remove('gone');
     document.body.style.overflowY = 'hidden';
+    window.scrollTo(0, 0);
+    closeNav();
+  }
+
+  document.body.style.overflowY = 'hidden';
 
   const trailerWrap = document.getElementById("trailer-wrap");
   const trailerPoster = document.getElementById("trailer-poster");
 
   if (trailerWrap && trailerPoster) {
     trailerPoster.addEventListener("click", () => {
-      trailerWrap.innerHTML = "<iframe width="560" height="315" src="https://www.youtube.com/embed/mc62f8lIqqU?si=e-gVW_nc9uvz2VAK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>;
+      trailerWrap.innerHTML = `<iframe src="https://www.youtube.com/embed/mc62f8lIqqU?si=QpxDpSYvsK-CSjtB&autoplay=1" title="EDJOP Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     }, { once: true });
   }
-
-    window.scrollTo(0, 0);
-    closeNav();
-  }
-
-  document.body.style.overflowY = 'hidden';
 
   // ── Embers ───────────────────────────────────────────────────
   const emberCanvas = document.getElementById('ember-canvas');
