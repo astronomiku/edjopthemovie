@@ -411,16 +411,11 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: filmSlide 9s infinite;
+      transition: opacity 1s ease;
     }
 
-    .film-slideshow img:nth-child(2) { animation-delay: 3s; }
-    .film-slideshow img:nth-child(3) { animation-delay: 6s; }
-
-    @keyframes filmSlide {
-      0%, 38% { opacity: 1; }
-      44%, 94% { opacity: 0; }
-      100% { opacity: 1; }
+    .film-slideshow img.active {
+      opacity: 1;
     }
 
     .explore-grid {
@@ -1236,7 +1231,7 @@
 
     <section id="synopsis" style="padding-top:160px;">
       <div class="film-slideshow" aria-label="Scenes from EDJOP">
-        <img src="assets/movie-still-1.png" alt="Scene from EDJOP" />
+        <img class="active" src="assets/movie-still-1.png" alt="Scene from EDJOP" />
         <img src="assets/movie-still-2.jpg" alt="Scene from EDJOP" />
         <img src="assets/movie-still-3.png" alt="Scene from EDJOP" />
       </div>
@@ -1566,6 +1561,17 @@
 
   tick();
   setInterval(tick, 1000);
+
+  const filmSlides = Array.from(document.querySelectorAll(".film-slideshow img"));
+  let filmSlideIndex = 0;
+
+  if (filmSlides.length > 1) {
+    setInterval(() => {
+      filmSlides[filmSlideIndex].classList.remove("active");
+      filmSlideIndex = (filmSlideIndex + 1) % filmSlides.length;
+      filmSlides[filmSlideIndex].classList.add("active");
+    }, 3000);
+  }
 
   // ── Enter / back transitions ─────────────────────────────────
   function enterSite() {
