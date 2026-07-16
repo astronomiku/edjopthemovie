@@ -62,6 +62,21 @@
       padding: 36px 20px 126px;
     }
 
+    .landing-corner-logo {
+      position: absolute;
+      top: 28px;
+      right: 34px;
+      z-index: 2;
+      width: clamp(86px, 10vw, 150px);
+    }
+
+    .landing-corner-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
     /* opacity-only hide — keeps iframe audio alive while on main site */
     #landing.gone {
       opacity: 0;
@@ -395,10 +410,10 @@
 
     .film-slideshow {
       position: relative;
-      width: min(100%, 1080px);
-      aspect-ratio: 16 / 7;
+      width: min(100%, 960px);
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-      margin: 0 0 56px;
+      margin: 0 auto 56px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
       box-shadow: 0 24px 80px rgba(0,0,0,.35);
@@ -1066,6 +1081,7 @@
     @media (max-width: 820px) {
       /* landing */
       #landing { gap: 16px; padding: 32px 16px 40px; }
+      .landing-corner-logo { top: 16px; right: 16px; width: clamp(64px, 18vw, 96px); }
       .landing-title { width: 80vw; }
       .landing-release { font-size: clamp(28px, 8vw, 48px); letter-spacing: .08em; max-width: 94vw; margin-top: -10px; }
       .trailer-wrap { width: 96vw; }
@@ -1146,6 +1162,10 @@
      LANDING PAGE
 ══════════════════════════════════════════════════ -->
 <div id="landing">
+
+  <div class="landing-corner-logo">
+    <img src="assets/3girls.png" alt="3 Girls" />
+  </div>
 
   <div class="landing-title">
     <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
@@ -1231,9 +1251,11 @@
 
     <section id="synopsis" style="padding-top:160px;">
       <div class="film-slideshow" aria-label="Scenes from EDJOP">
-        <img class="active" src="assets/movie-still-1.png" alt="Scene from EDJOP" />
+        <img class="active" src="assets/movie-still-1.jpg" alt="Scene from EDJOP" />
         <img src="assets/movie-still-2.jpg" alt="Scene from EDJOP" />
-        <img src="assets/movie-still-3.png" alt="Scene from EDJOP" />
+        <img src="assets/movie-still-3.jpg" alt="Scene from EDJOP" />
+        <img src="assets/movie-still-4.png" alt="Scene from EDJOP" />
+        <img src="assets/movie-still-5.png" alt="Scene from EDJOP" />
       </div>
       <h2>About the Film</h2>
       <p>
@@ -1461,13 +1483,13 @@
         </div>
 
         <div class="explore-block">
-          <h3>The Real Edjop</h3>
+          <h3>Memories of Edjop</h3>
           <div class="real-edjop-gallery">
-            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson archival photo"><img src="assets/edjop1.PNG" alt="Edgar Jopson archival photo" /></button>
-            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson archival photo"><img src="assets/edjop2.PNG" alt="Edgar Jopson archival photo" /></button>
-            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson family photo"><img src="assets/edjop3.PNG" alt="Edgar Jopson family photo" /></button>
-            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson family photo"><img src="assets/edjop4.PNG" alt="Edgar Jopson family photo" /></button>
-            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson family photo"><img src="assets/edjop5.PNG" alt="Edgar Jopson family photo" /></button>
+            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson archival photo"><img src="assets/edjop1.png" alt="Edgar Jopson archival photo" /></button>
+            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson archival photo"><img src="assets/edjop2.png" alt="Edgar Jopson archival photo" /></button>
+            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson archival photo"><img src="assets/edjop3.png" alt="Edgar Jopson archival photo" /></button>
+            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson family photo"><img src="assets/edjop4.png" alt="Edgar Jopson family photo" /></button>
+            <button class="real-edjop-thumb" type="button" aria-label="Open Edgar Jopson family photo"><img src="assets/edjop5.png" alt="Edgar Jopson family photo" /></button>
           </div>
         </div>
       </div>
@@ -1566,11 +1588,25 @@
   const filmSlides = Array.from(document.querySelectorAll(".film-slideshow img"));
   let filmSlideIndex = 0;
 
+  filmSlides.forEach((slide) => {
+    slide.addEventListener("error", () => {
+      slide.hidden = true;
+      slide.classList.remove("active");
+      const visibleSlides = filmSlides.filter((item) => !item.hidden);
+      if (visibleSlides.length && !visibleSlides.some((item) => item.classList.contains("active"))) {
+        filmSlideIndex = 0;
+        visibleSlides[0].classList.add("active");
+      }
+    });
+  });
+
   if (filmSlides.length > 1) {
     setInterval(() => {
-      filmSlides[filmSlideIndex].classList.remove("active");
-      filmSlideIndex = (filmSlideIndex + 1) % filmSlides.length;
-      filmSlides[filmSlideIndex].classList.add("active");
+      const visibleSlides = filmSlides.filter((slide) => !slide.hidden);
+      if (visibleSlides.length < 2) return;
+      visibleSlides[filmSlideIndex % visibleSlides.length].classList.remove("active");
+      filmSlideIndex = (filmSlideIndex + 1) % visibleSlides.length;
+      visibleSlides[filmSlideIndex].classList.add("active");
     }, 3000);
   }
 
