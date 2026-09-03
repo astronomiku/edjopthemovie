@@ -470,6 +470,20 @@
       gap: 10px;
     }
 
+    .poster-thumb {
+      display: block;
+      width: 100%;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .poster-thumb:hover img {
+      transform: scale(1.02);
+      filter: brightness(1.08);
+    }
+
     .poster-card img {
       display: block;
       width: 100%;
@@ -1529,24 +1543,24 @@
           <h3>Posters</h3>
           <div class="poster-gallery">
             <div class="poster-card">
-              <a href="assets/poster1.png" target="_blank" rel="noopener noreferrer"><img src="assets/poster1.png" alt="EDJOP poster 1" /></a>
-              <div class="poster-actions"><a href="assets/poster1.png" target="_blank" rel="noopener noreferrer">View</a><a href="assets/poster1.png" download>Download</a></div>
+              <button class="poster-thumb gallery-thumb" type="button" aria-label="Open EDJOP poster 1"><img src="assets/poster1.png" alt="EDJOP poster 1" /></button>
+              <div class="poster-actions"><a href="assets/poster1.png" download>Download</a></div>
             </div>
             <div class="poster-card">
-              <a href="assets/poster2.png" target="_blank" rel="noopener noreferrer"><img src="assets/poster2.png" alt="EDJOP poster 2" /></a>
-              <div class="poster-actions"><a href="assets/poster2.png" target="_blank" rel="noopener noreferrer">View</a><a href="assets/poster2.png" download>Download</a></div>
+              <button class="poster-thumb gallery-thumb" type="button" aria-label="Open EDJOP poster 2"><img src="assets/poster2.png" alt="EDJOP poster 2" /></button>
+              <div class="poster-actions"><a href="assets/poster2.png" download>Download</a></div>
             </div>
             <div class="poster-card">
-              <a href="assets/poster3.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/poster3.jpg" alt="EDJOP poster 3" /></a>
-              <div class="poster-actions"><a href="assets/poster3.jpg" target="_blank" rel="noopener noreferrer">View</a><a href="assets/poster3.jpg" download>Download</a></div>
+              <button class="poster-thumb gallery-thumb" type="button" aria-label="Open EDJOP poster 3"><img src="assets/poster3.jpg" alt="EDJOP poster 3" /></button>
+              <div class="poster-actions"><a href="assets/poster3.jpg" download>Download</a></div>
             </div>
             <div class="poster-card">
-              <a href="assets/poster4.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/poster4.jpg" alt="EDJOP poster 4" /></a>
-              <div class="poster-actions"><a href="assets/poster4.jpg" target="_blank" rel="noopener noreferrer">View</a><a href="assets/poster4.jpg" download>Download</a></div>
+              <button class="poster-thumb gallery-thumb" type="button" aria-label="Open EDJOP poster 4"><img src="assets/poster4.jpg" alt="EDJOP poster 4" /></button>
+              <div class="poster-actions"><a href="assets/poster4.jpg" download>Download</a></div>
             </div>
             <div class="poster-card">
-              <a href="assets/poster5.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/poster5.jpg" alt="EDJOP poster 5" /></a>
-              <div class="poster-actions"><a href="assets/poster5.jpg" target="_blank" rel="noopener noreferrer">View</a><a href="assets/poster5.jpg" download>Download</a></div>
+              <button class="poster-thumb gallery-thumb" type="button" aria-label="Open EDJOP poster 5"><img src="assets/poster5.jpg" alt="EDJOP poster 5" /></button>
+              <div class="poster-actions"><a href="assets/poster5.jpg" download>Download</a></div>
             </div>
           </div>
         </div>
@@ -1834,15 +1848,15 @@
   const galleryNext = document.querySelector(".gallery-lightbox-next");
   let galleryIndex = 0;
 
-  document.querySelectorAll(".real-edjop-thumb img").forEach((img) => {
+  document.querySelectorAll(".gallery-thumb img").forEach((img) => {
     img.addEventListener("error", () => {
-      const thumb = img.closest(".real-edjop-thumb");
+      const thumb = img.closest(".gallery-thumb");
       if (thumb) thumb.hidden = true;
     });
   });
 
   function getGalleryImages() {
-    return Array.from(document.querySelectorAll(".real-edjop-thumb:not([hidden]) img"));
+    return Array.from(document.querySelectorAll(".gallery-thumb:not([hidden]) img"));
   }
 
   function renderGalleryImage() {
@@ -1880,7 +1894,7 @@
     renderGalleryImage();
   }
 
-  document.querySelectorAll(".real-edjop-thumb").forEach((thumb) => {
+  document.querySelectorAll(".gallery-thumb").forEach((thumb) => {
     thumb.addEventListener("click", () => {
       const image = thumb.querySelector("img");
       if (image) openGallery(image);
