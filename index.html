@@ -955,6 +955,14 @@
         var(--black);
     }
 
+    /* the events section has a `hidden` attribute, but the site-wide
+       `section { display: flex; }` rule (author CSS) overrides the
+       browser's built-in `[hidden] { display: none; }` default, so it was
+       actually still showing. This ID rule wins over that unconditionally. */
+    #events {
+      display: none;
+    }
+
     /* ─── CONTACT ─────────────────────────────────────────── */
     #contact {
       min-height: auto;
@@ -1303,7 +1311,7 @@
     <div class="cinema-list-heading">
       <span class="cinema-list-kicker">#jointhemovement</span>
       <h2 id="cinema-list-title">Cinema List</h2>
-      <p>Find EDJOP in cinemas nationwide.</p>
+      <p>Find EDJOP in 68 ongoing cinemas nationwide.</p>
     </div>
     <div class="cinema-list-scroll">
       <div class="cinema-grid">
