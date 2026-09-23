@@ -128,7 +128,7 @@
 
     .cinema-list-heading h2 {
       color: var(--cream);
-      font-size: clamp(26px, 3.2vw, 42px);
+      font-size: clamp(20px, 2.3vw, 30px);
       margin: 0 0 4px;
     }
 
@@ -192,13 +192,13 @@
       color: var(--cream);
       background: var(--red);
       font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(18px, 2vw, 30px);
+      font-size: clamp(24px, 2.8vw, 42px);
       letter-spacing: .12em;
       line-height: 1;
       margin: 10px auto 0;
       max-width: none;
       opacity: 1;
-      padding: 8px 14px;
+      padding: 10px 18px;
       text-transform: none;
     }
 
@@ -206,7 +206,8 @@
       .cinema-list-panel { width: 96vw; padding: 0; }
       .cinema-grid { column-count: 1; column-gap: 0; }
       .cinema-list-kicker { font-size: clamp(15px, 4.5vw, 20px); }
-      .cinema-list-heading h2 { font-size: clamp(26px, 8vw, 38px); }
+      .cinema-list-heading h2 { font-size: clamp(20px, 6vw, 28px); }
+      .cinema-list-cta { font-size: clamp(24px, 7vw, 38px); }
       .cinema-location-list li { font-size: 15px; }
     }
 
@@ -225,6 +226,7 @@
       background: #ffffff;
       cursor: pointer;
       flex-shrink: 0;
+      margin-top: clamp(18px, 2.4vw, 34px);
       transition: background .3s ease, border-color .3s ease;
     }
 
@@ -1246,9 +1248,6 @@
 
   <div class="landing-release">Now Showing</div>
 
-  <button id="enter-btn" onclick="enterSite()">
-    <span>ENTER</span>
-  </button>
 
   <section class="cinema-list-panel" aria-labelledby="cinema-list-title">
     <div class="cinema-list-heading">
@@ -1263,6 +1262,9 @@
     </div>
   </section>
 
+  <button id="enter-btn" onclick="enterSite()">
+    <span>ENTER</span>
+  </button>
 
 </div>
 
