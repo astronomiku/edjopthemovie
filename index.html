@@ -81,21 +81,6 @@
       filter: brightness(1.05) contrast(1.1);
     }
 
-    .landing-release {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(28px, 5vw, 72px);
-      letter-spacing: .12em;
-      line-height: 1.15;
-      color: #c0151f;
-      text-align: center;
-      text-transform: uppercase;
-      flex-shrink: 0;
-      margin-top: clamp(-40px, -3.5vw, -20px);
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 0 26px rgba(192,21,31,.22);
-    }
-
     /* ─── TRAILER ─────────────────────────────────────────── */
     .trailer-wrap {
       width: clamp(320px, 82vw, 920px);
@@ -171,14 +156,14 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      gap: clamp(8px, 2.4vw, 30px);
-      margin-top: clamp(2px, 0.8vw, 8px);
+      gap: clamp(6px, 1.8vw, 22px);
+      margin-top: 0;
       flex-shrink: 0;
     }
 
     .laurel-badge {
       position: relative;
-      width: clamp(118px, 15vw, 168px);
+      width: clamp(92px, 11vw, 128px);
     }
 
     .laurel-svg {
@@ -189,19 +174,31 @@
       opacity: .85;
     }
 
+    .laurel-plate {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 78%;
+      height: 46%;
+      background: var(--cream);
+      border-radius: 10%;
+      box-shadow: 0 3px 10px rgba(0,0,0,.4);
+    }
+
     .laurel-logo {
       position: absolute;
+      top: 50%;
       left: 50%;
-      bottom: 15%;
-      transform: translateX(-50%);
-      max-width: 58%;
-      max-height: 32%;
+      transform: translate(-50%, -50%);
+      width: 64%;
+      max-height: 36%;
       object-fit: contain;
     }
 
     @media (max-width: 820px) {
-      .laurel-row { gap: 10px 16px; }
-      .laurel-badge { width: 108px; }
+      .laurel-row { gap: 8px 14px; }
+      .laurel-badge { width: 82px; }
     }
 
     /* enter button */
@@ -1152,7 +1149,6 @@
       /* landing */
       #landing { gap: 16px; padding: 10px 16px 24px; }
       .landing-title { width: 80vw; }
-      .landing-release { font-size: clamp(28px, 8vw, 48px); letter-spacing: .08em; max-width: 94vw; margin-top: -16px; }
       .cd-num  { font-size: clamp(34px, 10vw, 58px); }
       .cd-sep  { font-size: clamp(28px, 8vw, 50px); padding-bottom: 10px; }
       .cd-label { font-size: 9px; }
@@ -1227,8 +1223,8 @@
 <body>
 
 <svg style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
-  <symbol id="laurel-wreath" viewBox="0 0 300 150">
-    <ellipse cx="115.0" cy="119.0" rx="17.4" ry="6.6" transform="rotate(-122.6 115.0 119.0)"/><ellipse cx="91.8" cy="117.4" rx="16.4" ry="6.2" transform="rotate(-116.6 91.8 117.4)"/><ellipse cx="72.3" cy="113.8" rx="15.2" ry="5.8" transform="rotate(-108.6 72.3 113.8)"/><ellipse cx="56.4" cy="108.2" rx="14.2" ry="5.4" transform="rotate(-98.0 56.4 108.2)"/><ellipse cx="44.1" cy="100.8" rx="13.1" ry="5.0" transform="rotate(-84.5 44.1 100.8)"/><ellipse cx="35.0" cy="91.4" rx="11.9" ry="4.5" transform="rotate(-68.5 35.0 91.4)"/><ellipse cx="29.0" cy="79.9" rx="10.8" ry="4.1" transform="rotate(-52.3 29.0 79.9)"/><ellipse cx="26.0" cy="65.9" rx="9.8" ry="3.7" transform="rotate(-38.1 26.0 65.9)"/><ellipse cx="26.3" cy="49.1" rx="8.7" ry="3.3" transform="rotate(-26.9 26.3 49.1)"/><ellipse cx="30.1" cy="29.8" rx="7.6" ry="2.9" transform="rotate(-18.4 30.1 29.8)"/><ellipse cx="185.0" cy="119.0" rx="17.4" ry="6.6" transform="rotate(302.6 185.0 119.0)"/><ellipse cx="208.2" cy="117.4" rx="16.4" ry="6.2" transform="rotate(296.6 208.2 117.4)"/><ellipse cx="227.7" cy="113.8" rx="15.2" ry="5.8" transform="rotate(288.6 227.7 113.8)"/><ellipse cx="243.6" cy="108.2" rx="14.2" ry="5.4" transform="rotate(278.0 243.6 108.2)"/><ellipse cx="255.9" cy="100.8" rx="13.1" ry="5.0" transform="rotate(264.5 255.9 100.8)"/><ellipse cx="265.0" cy="91.4" rx="11.9" ry="4.5" transform="rotate(248.5 265.0 91.4)"/><ellipse cx="271.0" cy="79.9" rx="10.8" ry="4.1" transform="rotate(232.3 271.0 79.9)"/><ellipse cx="274.0" cy="65.9" rx="9.8" ry="3.7" transform="rotate(218.1 274.0 65.9)"/><ellipse cx="273.7" cy="49.1" rx="8.7" ry="3.3" transform="rotate(206.9 273.7 49.1)"/><ellipse cx="269.9" cy="29.8" rx="7.6" ry="2.9" transform="rotate(198.4 269.9 29.8)"/>
+  <symbol id="laurel-wreath" viewBox="0 0 220 220">
+    <ellipse cx="102.2" cy="207.7" rx="18.0" ry="6.8" transform="rotate(-355.0 102.2 207.7)"/><ellipse cx="78.5" cy="202.3" rx="16.9" ry="6.4" transform="rotate(-339.5 78.5 202.3)"/><ellipse cx="57.1" cy="190.8" rx="15.8" ry="6.0" transform="rotate(-324.0 57.1 190.8)"/><ellipse cx="39.6" cy="174.0" rx="14.7" ry="5.6" transform="rotate(-308.5 39.6 174.0)"/><ellipse cx="27.2" cy="153.2" rx="13.6" ry="5.2" transform="rotate(-293.0 27.2 153.2)"/><ellipse cx="20.8" cy="129.7" rx="12.5" ry="4.8" transform="rotate(-277.5 20.8 129.7)"/><ellipse cx="20.9" cy="105.5" rx="11.4" ry="4.3" transform="rotate(-262.0 20.9 105.5)"/><ellipse cx="27.5" cy="82.1" rx="10.3" ry="3.9" transform="rotate(-246.5 27.5 82.1)"/><ellipse cx="40.1" cy="61.4" rx="9.2" ry="3.5" transform="rotate(-231.0 40.1 61.4)"/><ellipse cx="57.7" cy="44.7" rx="8.1" ry="3.1" transform="rotate(-215.5 57.7 44.7)"/><ellipse cx="79.2" cy="33.4" rx="7.0" ry="2.7" transform="rotate(-200.0 79.2 33.4)"/><ellipse cx="117.8" cy="207.7" rx="18.0" ry="6.8" transform="rotate(535.0 117.8 207.7)"/><ellipse cx="141.5" cy="202.3" rx="16.9" ry="6.4" transform="rotate(519.5 141.5 202.3)"/><ellipse cx="162.9" cy="190.8" rx="15.8" ry="6.0" transform="rotate(504.0 162.9 190.8)"/><ellipse cx="180.4" cy="174.0" rx="14.7" ry="5.6" transform="rotate(488.5 180.4 174.0)"/><ellipse cx="192.8" cy="153.2" rx="13.6" ry="5.2" transform="rotate(473.0 192.8 153.2)"/><ellipse cx="199.2" cy="129.7" rx="12.5" ry="4.8" transform="rotate(457.5 199.2 129.7)"/><ellipse cx="199.1" cy="105.5" rx="11.4" ry="4.3" transform="rotate(442.0 199.1 105.5)"/><ellipse cx="192.5" cy="82.1" rx="10.3" ry="3.9" transform="rotate(426.5 192.5 82.1)"/><ellipse cx="179.9" cy="61.4" rx="9.2" ry="3.5" transform="rotate(411.0 179.9 61.4)"/><ellipse cx="162.3" cy="44.7" rx="8.1" ry="3.1" transform="rotate(395.5 162.3 44.7)"/><ellipse cx="140.8" cy="33.4" rx="7.0" ry="2.7" transform="rotate(380.0 140.8 33.4)"/>
   </symbol>
 </svg>
 
@@ -1241,8 +1237,6 @@
     <img src="assets/edjoptitle.jpeg" alt="EDJOP" />
   </div>
 
-  <div class="landing-release">Now Showing</div>
-
   <div class="trailer-wrap" id="trailerWrap" data-embed-src="https://www.youtube.com/embed/mc62f8lIqqU?autoplay=1&amp;rel=0">
     <button class="trailer-poster" type="button" id="trailerPoster" aria-label="Play EDJOP trailer">
       <img src="assets/trailerposter.jpeg" alt="EDJOP trailer" />
@@ -1252,15 +1246,18 @@
 
   <div class="laurel-row">
     <div class="laurel-badge">
-      <svg class="laurel-svg" viewBox="0 0 300 150" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <svg class="laurel-svg" viewBox="0 0 220 220" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <div class="laurel-plate"></div>
       <img class="laurel-logo" src="assets/tiffcom-logo.png" alt="TIFFCOM" />
     </div>
     <div class="laurel-badge">
-      <svg class="laurel-svg" viewBox="0 0 300 150" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <svg class="laurel-svg" viewBox="0 0 220 220" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <div class="laurel-plate"></div>
       <img class="laurel-logo" src="assets/barcelona-logo.png" alt="Asian Film Festival Barcelona — Casa Asia" />
     </div>
     <div class="laurel-badge">
-      <svg class="laurel-svg" viewBox="0 0 300 150" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <svg class="laurel-svg" viewBox="0 0 220 220" aria-hidden="true"><use href="#laurel-wreath"></use></svg>
+      <div class="laurel-plate"></div>
       <img class="laurel-logo" src="assets/sandiego-logo.png" alt="San Diego Asian Film Festival" />
     </div>
   </div>
