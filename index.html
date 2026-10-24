@@ -287,11 +287,14 @@
       max-width: min(42vw, 360px);
     }
 
-    .logo img {
-      height: 100%;
-      width: auto;
+    .logo-wordmark {
       display: block;
-      filter: brightness(1.05) contrast(1.1);
+      color: var(--cream);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: .12em;
+      line-height: 1;
+      text-shadow: 0 0 18px rgba(200,97,26,.22);
     }
 
     nav {
@@ -1187,7 +1190,7 @@
       .footer-credit.produced { gap: 0; }
       .footer-credit span { font-size: 9px; letter-spacing: .14em; }
       .footer-credit img { max-height: 24px; max-width: 86px; }
-      .footer-social { width: 100%; justify-content: center; margin-left: 0; gap: 18px; }
+      .footer-social { width: auto; justify-content: flex-end; margin-left: auto; gap: 12px; flex-shrink: 0; }
       .footer-social a { padding: 6px; box-sizing: content-box; }
       .footer-social.social-icons img { width: 100%; height: 100%; object-fit: contain; }
       .footer-social a.facebook-icon { width: 24px; height: 24px; }
@@ -1198,8 +1201,7 @@
       .footer-social a.tiktok-icon img { transform: scale(1.3); transform-origin: center; }
       .site-credit { width: 100%; text-align: center; font-size: 9px; }
       .contact-credit { margin: 24px auto 178px; }
-      footer.in-site .footer-logos { display: none !important; }
-      .footer-logos { justify-content: center; margin-right: 0; width: 100%; }
+      .footer-logos { justify-content: flex-start; margin-right: auto; width: auto; flex: 1 1 auto; }
 
       .film-slideshow { aspect-ratio: 4 / 3; margin-bottom: 34px; }
       .explore-grid.poster-library { grid-template-columns: 1fr; }
@@ -1261,8 +1263,8 @@
 
   <header>
     <div class="header-brand">
-      <div class="logo" onclick="goToLanding()">
-        <img src="assets/edjopsept16.png" alt="EDJOP 09162026" />
+      <div class="logo" onclick="goToLanding()" aria-label="EDJOP — back to landing page">
+        <span class="logo-wordmark">EDJOP</span>
       </div>
     </div>
     <nav>
@@ -1596,10 +1598,6 @@
 
   <footer>
     <div class="footer-logos">
-    <div class="footer-credit">
-      <span>Presented by</span>
-      <img src="assets/warner.png" alt="Warner" />
-    </div>
     <div class="footer-credit produced">
       <span>Produced by</span>
       <img src="assets/openwater.png" alt="Open Waters" />
